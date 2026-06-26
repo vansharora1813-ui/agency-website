@@ -20,12 +20,9 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
   }, []);
 
   const menuItems = [
-    { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' },
     { id: 'portfolio', label: 'Portfolio' },
     { id: 'process', label: 'Process' },
-    { id: 'testimonials', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -37,70 +34,79 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
 
   return (
     <div className="fixed top-6 left-0 right-0 z-50 px-6 sm:px-8 flex justify-center pointer-events-none">
-      <motion.header
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-        className={`w-full max-w-5xl rounded-full border border-neutral-200/50 bg-white/70 backdrop-blur-md shadow-sm transition-all duration-300 pointer-events-auto flex items-center justify-between px-6 py-2.5 ${
-          scrolled ? 'border-neutral-200/80 shadow-md shadow-neutral-200/5' : ''
-        }`}
-      >
-        {/* Logo */}
-        <a
-          href="#home"
-          onClick={(e) => handleLinkClick(e, 'home')}
-          className="flex items-center gap-1.5 font-display text-sm font-extrabold tracking-tight text-neutral-900 select-none"
-        >
-          <span>AURA</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
-        </a>
-
-        {/* Center Links */}
-        <nav className="hidden md:flex items-center gap-6">
-          {menuItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleLinkClick(e, item.id)}
-              className="relative px-1 py-1 text-xs font-semibold tracking-wide text-neutral-500 hover:text-neutral-950 transition-colors duration-200"
-            >
-              {item.label}
-              {activeSection === item.id && (
-                <motion.div
-                  layoutId="activeDot"
-                  className="absolute -bottom-1 left-0 right-0 flex justify-center pointer-events-none"
-                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-                >
-                  <span className="w-1 h-1 rounded-full bg-neutral-950" />
-                </motion.div>
-              )}
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA (Right) */}
-        <div className="hidden md:block">
+      <div className="w-full max-w-7xl flex items-center justify-center relative">
+        
+        {/* Logo (Top Left) */}
+        <div className="absolute left-0 pointer-events-auto">
           <a
-            href="#contact"
-            onClick={(e) => handleLinkClick(e, 'contact')}
-            className="group relative inline-flex items-center gap-1 px-4 py-2 rounded-full bg-neutral-950 hover:bg-neutral-900 text-white text-[10px] font-bold uppercase tracking-wider transition-all duration-300 shadow shadow-neutral-950/5 hover:scale-[1.02] cursor-pointer"
+            href="#home"
+            onClick={(e) => handleLinkClick(e, 'home')}
+            className="flex items-center gap-1.5 font-display text-sm font-extrabold tracking-tight text-neutral-900 select-none bg-white/80 backdrop-blur-md border border-neutral-200/40 px-4 py-2.5 rounded-full shadow-sm hover:scale-[1.02] transition-all duration-200 cursor-pointer"
           >
-            <span>Consultation</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            <span>AURA</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#166534]" />
           </a>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
-        <div className="md:hidden flex items-center">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-1.5 rounded-full hover:bg-neutral-100 text-neutral-600 transition-colors"
-            aria-label="Toggle Navigation"
+        {/* Center Floating Navigation Pill */}
+        <motion.header
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+          className={`pointer-events-auto rounded-full border border-neutral-200/50 bg-white/70 backdrop-blur-md shadow-sm transition-[border-color,background-color,box-shadow] duration-200 ease-out flex items-center justify-center px-6 py-2.5 ${
+            scrolled ? 'border-neutral-200/80 bg-white/90 shadow-md shadow-neutral-200/5' : ''
+          }`}
+        >
+          {/* Center Links */}
+          <nav className="hidden md:flex items-center gap-6">
+            {menuItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleLinkClick(e, item.id)}
+                className="relative px-1 py-1 text-xs font-bold tracking-wider uppercase text-neutral-500 hover:text-neutral-950 transition-colors duration-200"
+              >
+                {item.label}
+                {activeSection === item.id && (
+                  <motion.div
+                     layoutId="activeDot"
+                     className="absolute -bottom-1 left-0 right-0 flex justify-center"
+                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  >
+                    <span className="w-1 h-1 rounded-full bg-neutral-950" />
+                  </motion.div>
+                )}
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile Hamburger Toggle */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-1.5 rounded-full hover:bg-neutral-100 text-neutral-600 transition-colors"
+              aria-label="Toggle Navigation"
+            >
+              {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
+          </div>
+        </motion.header>
+
+        {/* Consultation Button (Top Right) - Premium Button Style */}
+        <div className="absolute right-0 pointer-events-auto hidden md:flex items-center">
+          <a
+            href="#contact"
+            onClick={(e) => handleLinkClick(e, 'contact')}
+            className="group relative inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#111111] hover:bg-neutral-900 text-[#F0F4F8] hover:text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_25px_rgba(22,101,52,0.25)] hover:scale-[1.02] border border-neutral-850 cursor-pointer overflow-hidden"
           >
-            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
+            <span className="tracking-widest">Consultation</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" />
+            {/* Subtle premium border glow highlight */}
+            <span className="absolute inset-0 rounded-full border border-white/10 group-hover:border-[#166534]/50 transition-colors duration-300" />
+          </a>
         </div>
-      </motion.header>
+
+      </div>
 
       {/* Mobile Drawer Dropdown */}
       <AnimatePresence>

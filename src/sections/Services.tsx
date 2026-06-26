@@ -31,23 +31,36 @@ export default function Services({ onNavigate }: ServicesProps) {
       bullet: 'Business & Portfolio Websites',
       side: 'left',
       preview: (
-        <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-xl p-3 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans">
-          <div className="flex justify-between items-center text-[7px] text-neutral-400">
-            <span className="font-extrabold uppercase">AURA CORE</span>
-            <span>V1.0</span>
+        <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-2xl p-4 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans relative">
+          {/* Subtle design grid pattern in the background */}
+          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
+          
+          <div className="relative z-10 flex justify-between items-center text-[8px] text-neutral-400 font-medium">
+            <span className="tracking-widest uppercase font-semibold">MUSEUM OF MODERN ART</span>
+            <span className="font-mono text-neutral-350">© 2026</span>
           </div>
-          <div className="my-2 space-y-1.5">
-            <h4 className="text-[10px] font-black leading-tight uppercase">Custom Architecture</h4>
-            <p className="text-[7px] text-neutral-500">Hand-coded React modules compiled for rapid page loads and sub-1s Core Web Vitals.</p>
+
+          <div className="relative z-10 my-auto py-2">
+            <h4 className="text-[15px] font-light leading-none tracking-tight text-neutral-950 font-serif mb-1">
+              The Art of Coded Spaces
+            </h4>
+            <p className="text-[7px] text-neutral-400 font-sans tracking-wide max-w-[200px] leading-relaxed">
+              Curating high-performance layouts for cultural foundations and global design houses.
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-2 text-center text-[7px]">
-            <div className="p-1 rounded bg-neutral-50 border border-neutral-150">
-              <p className="font-extrabold">95+ Score</p>
-              <p className="text-[5px] text-neutral-500">Performance</p>
+
+          {/* Premium wireframe card stack effect */}
+          <div className="relative z-10 flex gap-2 items-end justify-between mt-auto">
+            <div className="flex gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-neutral-950" />
+              <span className="w-1.5 h-1.5 rounded-full bg-neutral-300" />
+              <span className="w-1.5 h-1.5 rounded-full bg-neutral-200" />
             </div>
-            <div className="p-1 rounded bg-neutral-50 border border-neutral-150">
-              <p className="font-extrabold">100%</p>
-              <p className="text-[5px] text-neutral-500">Mobile Responsive</p>
+            
+            {/* Minimalist interactive node diagram or preview thumbnail */}
+            <div className="flex items-center gap-2 bg-neutral-50 border border-neutral-200/80 px-2.5 py-1 rounded-full text-[7px] font-semibold text-neutral-800 shadow-sm">
+              <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="font-mono tracking-tight text-[6px]">142.4 FPS / LIGHTNING</span>
             </div>
           </div>
         </div>
@@ -140,7 +153,7 @@ export default function Services({ onNavigate }: ServicesProps) {
   ];
 
   return (
-    <section id="services" className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC] relative overflow-hidden">
+    <section id="services" className="py-28 bg-[#F0F4F8] border-t border-[#ECECEC] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, MessageSquare, Instagram, ArrowLeft } from 'lucide-react';
+import { Mail, MapPin, Send, MessageSquare, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function ContactPage() {
@@ -38,7 +38,7 @@ Details: ${formData.message || 'Interested in a website consultation.'}`;
   };
 
   return (
-    <div className="bg-[#FAFAFA] min-h-screen pt-32 pb-24 text-left">
+    <div className="bg-[#F0F4F8] min-h-screen pt-32 pb-24 text-left">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Navigation back helper */}
@@ -95,7 +95,11 @@ Details: ${formData.message || 'Interested in a website consultation.'}`;
                 className="flex gap-4 items-start p-4 rounded-2xl border border-neutral-200 bg-white transition-all duration-300 hover:border-pink-500/30 hover:bg-pink-500/[0.02] hover:shadow-lg hover:shadow-pink-500/5 group"
               >
                 <div className="p-3 rounded-xl border border-neutral-200 bg-white text-neutral-800 transition-colors group-hover:bg-pink-500 group-hover:text-white group-hover:border-pink-500">
-                  <Instagram className="w-4 h-4" />
+                  <svg className="w-4 h-4 stroke-current fill-none stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
                 </div>
                 <div>
                   <h3 className="text-[9px] font-black uppercase text-neutral-400 tracking-wider">Instagram Handle</h3>

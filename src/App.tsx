@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import WhyChooseUs from './components/WhyChooseUs';
-import Process from './components/Process';
-import Testimonials from './components/Testimonials';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Services from './sections/Services';
+import WhyChooseUs from './sections/WhyChooseUs';
+import Process from './sections/Process';
+import Testimonials from './sections/Testimonials';
 import Footer from './components/Footer';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
@@ -33,7 +33,7 @@ function AppContent() {
     if (location.pathname !== '/') return;
 
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'process', 'testimonials'];
+      const sections = ['about', 'process'];
       const scrollPosition = window.scrollY + 180; // Offset for natural intersection triggers
 
       for (const section of sections) {
@@ -108,7 +108,7 @@ function AppContent() {
   };
 
   return (
-    <div className="bg-[#FAFAFA] text-[#111111] min-h-screen relative flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
+    <div className="bg-[#F0F4F8] text-[#111111] min-h-screen relative flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
       {/* Floating Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-[2.5px] bg-neutral-100 z-50">
         <div

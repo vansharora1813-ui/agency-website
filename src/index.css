@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-light: #FAFAFA;
+  --color-bg-light: #F0F4F8;
   --color-surface-light: #FFFFFF;
   --color-text-primary: #111111;
   --color-text-secondary: #666666;
@@ -60,7 +60,7 @@ html {
 }
 
 body {
-  background-color: #FAFAFA;
+  background-color: #F0F4F8;
   color: #111111;
   font-family: "Plus Jakarta Sans", sans-serif;
   overflow-x: hidden;
@@ -73,7 +73,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAFAFA;
+  background: #F0F4F8;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -136,7 +136,7 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <div className="bg-[#FAFAFA] min-h-screen pt-32 pb-24 text-left">
+    <div className="bg-[#F0F4F8] min-h-screen pt-32 pb-24 text-left">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Typographic Intro */}

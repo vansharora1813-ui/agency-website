@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Check, X, Shield, Search, Zap, Smartphone, Sparkles, Clock, Edit3, Heart } from 'lucide-react';
+import PremiumCard from '../components/PremiumCard';
 
 export default function WhyChooseUs() {
   const containerVariants = {
@@ -31,7 +32,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC]">
+    <section className="py-28 bg-[#F0F4F8] border-t border-[#ECECEC]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}
@@ -103,27 +104,16 @@ export default function WhyChooseUs() {
           {/* Capabilities Grid */}
           <motion.div 
             variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-[#ECECEC]"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t border-[#ECECEC]"
           >
-            {capabilities.map((cap, i) => {
-              const Icon = cap.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -4 }}
-                  className="space-y-4 text-left p-6 bg-white border border-[#ECECEC] rounded-xl shadow-sm transition-all duration-300"
-                >
-                  <div className="p-2.5 rounded-lg border border-neutral-150 text-neutral-800 w-fit">
-                    <Icon className="w-4.5 h-4.5" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-neutral-900 tracking-wide">{cap.title}</h3>
-                    <p className="text-xs text-neutral-500 leading-relaxed font-medium">{cap.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {capabilities.map((cap, i) => (
+              <PremiumCard
+                key={i}
+                title={cap.title}
+                description={cap.desc}
+                Icon={cap.icon}
+              />
+            ))}
           </motion.div>
 
         </motion.div>
