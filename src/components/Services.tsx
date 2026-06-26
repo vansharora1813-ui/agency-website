@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion';
-import { 
-  Briefcase, User, Layers, ShoppingBag, 
-  Utensils, GraduationCap, RefreshCw, Wrench, ArrowRight 
-} from 'lucide-react';
+import { ArrowRight, RefreshCw, ShoppingBag } from 'lucide-react';
 
 interface ServicesProps {
   onNavigate: (sectionId: string) => void;
@@ -13,103 +10,223 @@ export default function Services({ onNavigate }: ServicesProps) {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
+  const textVariants = {
+    hidden: { y: 24, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] },
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
-  const services = [
-    { title: 'Business Websites', desc: 'Custom bespoke corporate platforms engineered to communicate elite authority and capture business contracts.', icon: Briefcase },
-    { title: 'Portfolio Websites', desc: 'Exquisite, highly visual showcase sites custom-built for designers, architects, builders, and elite creatives.', icon: User },
-    { title: 'Landing Pages', desc: 'Ultra-targeted single pages crafted with high-converting psychology and custom triggers to multiply leads.', icon: Layers },
-    { title: 'E-Commerce Stores', desc: 'Secure, lightning-fast shopping systems with unified payment gateways (UPI, cards) and checkout flows.', icon: ShoppingBag },
-    { title: 'Restaurant Websites', desc: 'Sophisticated culinary showcases featuring fluid interactive menus, reservation schedulers, and location listings.', icon: Utensils },
-    { title: 'Educational Websites', desc: 'Structured platforms for academies and trainers containing batch schedules, result boards, and registration forms.', icon: GraduationCap },
-    { title: 'Website Redesign', desc: 'Transform outdated layouts into stunning, modern SaaS-style sites that align with contemporary user habits.', icon: RefreshCw },
-    { title: 'Maintenance & Support', desc: 'Comprehensive SLA support including active cloud migration, backups, daily security patches, and speeds tuning.', icon: Wrench },
+  const sections = [
+    {
+      num: '01',
+      title: 'Premium Corporate & Portfolio Platforms',
+      desc: 'Bespoke corporate websites and luxury creative portfolios designed from scratch. We build search-optimized architectures that represent your brand as an industry leader, establishing immediate market authority.',
+      bullet: 'Business & Portfolio Websites',
+      side: 'left',
+      preview: (
+        <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-xl p-3 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans">
+          <div className="flex justify-between items-center text-[7px] text-neutral-400">
+            <span className="font-extrabold uppercase">AURA CORE</span>
+            <span>V1.0</span>
+          </div>
+          <div className="my-2 space-y-1.5">
+            <h4 className="text-[10px] font-black leading-tight uppercase">Custom Architecture</h4>
+            <p className="text-[7px] text-neutral-500">Hand-coded React modules compiled for rapid page loads and sub-1s Core Web Vitals.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-2 text-center text-[7px]">
+            <div className="p-1 rounded bg-neutral-50 border border-neutral-150">
+              <p className="font-extrabold">95+ Score</p>
+              <p className="text-[5px] text-neutral-500">Performance</p>
+            </div>
+            <div className="p-1 rounded bg-neutral-50 border border-neutral-150">
+              <p className="font-extrabold">100%</p>
+              <p className="text-[5px] text-neutral-500">Mobile Responsive</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      num: '02',
+      title: 'High-Converting Landing Pages & Funnels',
+      desc: 'Clean, modular single-page funnels engineered with conversion psychology. We integrate direct lead parameters and call triggers to minimize user drop-off and maximize customer outreach.',
+      bullet: 'Landing Pages',
+      side: 'right',
+      preview: (
+        <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-xl p-4 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans">
+          <div className="flex justify-between items-center text-[7px] text-neutral-400">
+            <span className="font-extrabold uppercase">CONVERSIONS</span>
+            <span className="text-emerald-500 bg-emerald-50 px-1.5 py-0.5 rounded font-bold uppercase text-[6px]">ACTIVE</span>
+          </div>
+          <div className="space-y-2 mt-2">
+            <div className="w-10 h-1.5 rounded bg-neutral-200" />
+            <div className="space-y-1">
+              <div className="w-full h-2.5 rounded bg-neutral-100" />
+              <div className="w-5/6 h-2.5 rounded bg-neutral-100" />
+            </div>
+          </div>
+          <div className="w-full py-2.5 rounded bg-neutral-950 text-white font-bold text-[8px] text-center uppercase tracking-wider mt-4">
+            Request Free Session
+          </div>
+        </div>
+      )
+    },
+    {
+      num: '03',
+      title: 'Custom E-Commerce & Dining Integrations',
+      desc: 'Fluid digital menus, reservations modules, and fast checkout e-commerce architectures. Built with secure payment gateways and API endpoints that keep checkout friction to an absolute minimum.',
+      bullet: 'E-Commerce Stores & Restaurant Websites',
+      side: 'left',
+      preview: (
+        <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-xl p-3 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans">
+          <div className="flex justify-between items-center text-[7px] text-neutral-405">
+            <span className="font-extrabold uppercase flex items-center gap-1"><ShoppingBag className="w-2.5 h-2.5" /> SECURE GATEWAY</span>
+            <span>UPI / PAYMENTS</span>
+          </div>
+          <div className="p-2.5 bg-neutral-50 rounded-lg border border-neutral-150 flex items-center justify-between text-[8px] font-bold">
+            <div className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Table Booking Success</span>
+            </div>
+            <span className="text-neutral-500"> Dwarka </span>
+          </div>
+          <div className="space-y-1.5">
+            <div className="flex justify-between text-[7px] text-neutral-550 border-b border-neutral-150 pb-1">
+              <span>Espresso Coffee Double</span>
+              <span className="font-bold">₹160</span>
+            </div>
+            <div className="flex justify-between text-[7px] text-neutral-550">
+              <span>Croissant Butter Baked</span>
+              <span className="font-bold">₹180</span>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      num: '04',
+      title: 'Enterprise Redesign & SLA Support Care',
+      desc: 'Complete audit processes that redesign outdated legacy websites. Supported by daily cloud code backups, speed optimizations, domain security patches, and instant emergency fixes.',
+      bullet: 'Website Redesigns, Maintenance & Support',
+      side: 'right',
+      preview: (
+        <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-xl p-4 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans">
+          <div className="flex justify-between items-center text-[7px] text-neutral-400">
+            <span className="font-extrabold uppercase">SUPPORT PLAN</span>
+            <span>24/7 SLA</span>
+          </div>
+          <div className="space-y-2 mt-2">
+            <p className="text-[10px] font-black text-neutral-900 flex items-center gap-1">
+              <RefreshCw className="w-3.5 h-3.5 text-neutral-500 animate-spin-slow" /> Redesign Framework
+            </p>
+            <p className="text-[7px] text-neutral-500 leading-normal">Outdated layouts restructured into mobile-first lightweight static pages.</p>
+          </div>
+          <div className="flex justify-between items-center pt-2.5 border-t border-neutral-100 mt-2 text-[7px] font-bold text-neutral-500">
+            <span>Uptime Monitoring</span>
+            <span className="text-emerald-600 font-extrabold flex items-center gap-1">
+              <span className="w-1 h-1 rounded-full bg-emerald-500" /> 100% Active
+            </span>
+          </div>
+        </div>
+      )
+    }
   ];
 
   return (
-    <section id="services" className="py-24 bg-[#050816] relative border-t border-white/5 overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/4 right-0 w-[450px] h-[450px] bg-accent-secondary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[450px] h-[450px] bg-accent-primary/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+    <section id="services" className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-16"
+          className="space-y-28"
         >
-          {/* Section title */}
+          {/* Main Title Section */}
           <div className="text-center space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-accent-primary uppercase tracking-widest">WHAT WE DELIVER</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
-              Bespoke Solutions Built For High-Performance.
+            <span className="text-[10px] font-black text-neutral-450 uppercase tracking-widest">OFFERINGS</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-neutral-900 tracking-tight leading-tight">
+              Client Capabilities & Solutions.
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">
-              We build custom coded web properties. No drag-and-drop constraints. No page bloated scripts. Just clean architecture tailored for your scaling needs.
+            <p className="text-neutral-500 text-sm leading-relaxed font-medium">
+              We design and code clean, structured web properties. Built bespoke from layout grids to final CDN deployments.
             </p>
           </div>
 
-          {/* Services Grid */}
-          <motion.div 
-            variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {services.map((srv, i) => {
-              const Icon = srv.icon;
+          {/* Alternating Layout Sections */}
+          <div className="space-y-36">
+            {sections.map((sect, idx) => {
+              const isLeft = sect.side === 'left';
               return (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -6 }}
-                  className="p-[1px] rounded-2xl bg-white/5 hover:bg-gradient-accent transition-all duration-300 group cursor-pointer"
-                  onClick={() => onNavigate('contact')}
+                <div 
+                  key={idx}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
                 >
-                  {/* Inside card box */}
-                  <div className="h-full w-full bg-[#050816] rounded-[15px] p-8 flex flex-col justify-between relative overflow-hidden">
-                    {/* Radial glow follow tracker */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-accent-primary/10 via-transparent to-accent-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                    <div className="space-y-6">
-                      <div className="p-3.5 rounded-xl bg-white/5 border border-white/5 text-slate-350 w-fit group-hover:bg-gradient-accent group-hover:text-white transition-all duration-350">
-                        <Icon className="w-5.5 h-5.5 group-hover:rotate-6 transition-transform duration-300" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="text-base font-bold text-white tracking-wide group-hover:text-accent-secondary transition-colors">
-                          {srv.title}
-                        </h3>
-                        <p className="text-xs text-slate-400 leading-relaxed font-medium">
-                          {srv.desc}
-                        </p>
-                      </div>
+                  {/* Text Details */}
+                  <motion.div 
+                    variants={textVariants}
+                    className={`lg:col-span-6 space-y-6 text-left ${
+                      isLeft ? 'lg:order-1' : 'lg:order-2'
+                    }`}
+                  >
+                    <div className="flex items-baseline gap-4">
+                      <span className="font-display text-7xl font-black text-neutral-200 select-none">
+                        {sect.num}
+                      </span>
+                      <div className="h-[1px] flex-grow bg-neutral-200" />
                     </div>
+                    
+                    <span className="text-[10px] font-black uppercase tracking-widest text-neutral-400">
+                      {sect.bullet}
+                    </span>
 
-                    <div className="pt-6 border-t border-white/5 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500 group-hover:text-white transition-colors mt-6">
-                      <span>Request Quote</span>
-                      <motion.span
-                        animate={{ x: [0, 4, 0] }}
-                        transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                    <h3 className="text-2xl sm:text-3xl font-black font-display text-neutral-900 tracking-tight leading-tight">
+                      {sect.title}
+                    </h3>
+                    
+                    <p className="text-neutral-500 text-sm leading-relaxed font-medium">
+                      {sect.desc}
+                    </p>
+
+                    <div className="pt-2">
+                      <button
+                        onClick={() => onNavigate('contact')}
+                        className="group inline-flex items-center gap-1.5 text-neutral-900 hover:text-neutral-600 text-xs font-bold uppercase tracking-wider cursor-pointer"
                       >
-                        <ArrowRight className="w-4 h-4 text-accent-secondary" />
-                      </motion.span>
+                        <span>Discuss this Service</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+
+                  {/* Mockup Preview Column */}
+                  <motion.div 
+                    variants={textVariants}
+                    className={`lg:col-span-6 flex justify-center ${
+                      isLeft ? 'lg:order-2' : 'lg:order-1'
+                    }`}
+                  >
+                    {/* Simulated screen container */}
+                    <div className="w-full max-w-[420px] p-6 rounded-2xl bg-white border border-neutral-200/60 shadow-lg flex justify-center items-center relative overflow-hidden group">
+                      <div className="absolute inset-0 bg-neutral-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10" />
+                      <div className="transition-transform duration-500 group-hover:scale-[1.01]">
+                        {sect.preview}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                </div>
               );
             })}
-          </motion.div>
+          </div>
+
         </motion.div>
       </div>
     </section>

@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { Compass, BookOpen, PenTool, Code, CheckCircle, Rocket } from 'lucide-react';
+import { Compass, Calendar, Edit3, Code, Terminal, Rocket } from 'lucide-react';
 
 export default function Process() {
   const steps = [
-    { title: 'Discovery', num: '01', icon: Compass, desc: 'We deep dive into your business metrics, target demographic, brand guidelines, and key conversion objectives.' },
-    { title: 'Planning', num: '02', icon: BookOpen, desc: 'We map out custom page hierarchies, visual sitemaps, and direct lead paths to define the scope.' },
-    { title: 'Design', num: '03', icon: PenTool, desc: 'We create custom, high-fidelity UI mockups in Figma using premium aesthetics, curated colors, and modern shapes.' },
-    { title: 'Development', num: '04', icon: Code, desc: 'Our engineering team writes custom hand-coded React structures layered with fluid, micro-animated Framer Motion components.' },
-    { title: 'Testing', num: '05', icon: CheckCircle, desc: 'We perform strict speed audits (Core Web Vitals), cross-browser grid checkups, and test form submissions.' },
-    { title: 'Launch', num: '06', icon: Rocket, desc: 'We point your domain, set up hosting on global CDN edges, configure SSL keys, and launch live in 5 days.' },
+    { title: 'Discovery & Consultation', num: '01', icon: Compass, desc: 'We deep dive into your business model, customer demographic, target search keywords, and key conversion metrics.' },
+    { title: 'Information Mapping', num: '02', icon: Calendar, desc: 'We outline content structures, link parameters, sitemaps, and direct lead paths to minimize funnel friction.' },
+    { title: 'Visual & Interface Design', num: '03', icon: Edit3, desc: 'We craft high-fidelity desktop and mobile mockups in Figma, prioritizing typography, whitespace, and branding rules.' },
+    { title: 'Engineering & Animation', num: '04', icon: Code, desc: 'We handcode your web pages in React and Tailwind CSS, layering lightweight scroll-bound Framer Motion transitions.' },
+    { title: 'Speed Audit & Diagnostics', num: '05', icon: Terminal, desc: 'We run diagnostics checking performance, semantic schema, speed indexing, and responsive alignment grids.' },
+    { title: 'CDN Launch & SSL Setup', num: '06', icon: Rocket, desc: 'We point your domain, setup security headers, configure hosting on global CDN edges, and go live.' }
   ];
 
   const containerVariants = {
@@ -19,101 +19,68 @@ export default function Process() {
     },
   };
 
-  const cardVariantsLeft = {
-    hidden: { x: -40, opacity: 0 },
+  const itemVariants = {
+    hidden: { y: 24, opacity: 0 },
     visible: {
-      x: 0,
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.7, ease: [0.25, 1, 0.5, 1] },
-    },
-  };
-
-  const cardVariantsRight = {
-    hidden: { x: 40, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.7, ease: [0.25, 1, 0.5, 1] },
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
   return (
-    <section id="process" className="py-24 bg-[#050816] relative border-t border-white/5 overflow-hidden">
-      {/* Background glow blobs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent-primary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+    <section id="process" className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC] relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-16"
+          className="space-y-20"
         >
           {/* Header */}
           <div className="text-center space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-accent-secondary uppercase tracking-widest">OUR BLUEPRINT</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
-              From Concept to Launch in 5 Days.
+            <span className="text-[10px] font-black text-neutral-450 uppercase tracking-widest">TIMELINE</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-neutral-900 tracking-tight leading-tight">
+              A Agile 5-Day Launch Path.
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">
-              We have structured a frictionless, milestone-driven execution plan to deliver pixel-perfect websites without communication lags or launch delays.
+            <p className="text-neutral-500 text-sm leading-relaxed font-medium">
+              Our structured build process ensures pixel-perfect codebases and seamless handoffs with zero launch delays.
             </p>
           </div>
 
-          {/* Timeline Process Flow */}
-          <div className="relative max-w-4xl mx-auto mt-20">
-            {/* Center Line (Desktop) */}
-            <div className="absolute left-1/2 top-4 bottom-4 w-[1px] bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-primary transform -translate-x-1/2 hidden md:block opacity-30" />
-
-            <div className="space-y-12 md:space-y-16">
-              {steps.map((step, idx) => {
-                const Icon = step.icon;
-                const isEven = idx % 2 === 0;
-
-                return (
-                  <div 
-                    key={idx} 
-                    className={`flex flex-col md:flex-row items-center relative ${
-                      isEven ? 'md:justify-start' : 'md:justify-end'
-                    }`}
-                  >
-                    {/* Center Dot (Desktop) */}
-                    <div className="absolute left-1/2 top-1/2 w-8 h-8 rounded-full bg-[#050816] border border-accent-secondary/50 flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 hidden md:flex z-20">
-                      <span className="w-2.5 h-2.5 rounded-full bg-accent-secondary animate-pulse" />
-                    </div>
-
-                    {/* Content Card */}
-                    <motion.div
-                      variants={isEven ? cardVariantsLeft : cardVariantsRight}
-                      className={`w-full md:w-[45%] p-6 md:p-8 rounded-2xl border border-white/5 bg-white/2 relative overflow-hidden group text-left ${
-                        isEven ? 'md:text-right' : 'md:text-left'
-                      }`}
-                    >
-                      {/* Ambient hover light */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-accent-primary/5 to-accent-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                      <div className={`flex items-center gap-4 mb-4 ${
-                        isEven ? 'md:flex-row-reverse' : 'flex-row'
-                      }`}>
-                        <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-slate-350 group-hover:text-accent-secondary transition-colors duration-300">
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="text-xs font-black text-slate-500 uppercase tracking-widest">{step.num}</span>
-                          <h3 className="text-lg font-bold text-white font-display tracking-wide">{step.title}</h3>
-                        </div>
-                      </div>
-
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">
-                        {step.desc}
-                      </p>
-                    </motion.div>
+          {/* Editorial Vertical Step Layout */}
+          <div className="relative mt-16 max-w-3xl mx-auto border-l border-neutral-200 pl-8 md:pl-12 space-y-12 text-left">
+            {steps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
+                <motion.div 
+                  key={idx}
+                  variants={itemVariants}
+                  className="relative group space-y-3"
+                >
+                  {/* Glowing Node on timeline line */}
+                  <div className="absolute -left-[38px] md:-left-[54px] top-1.5 w-4 h-4 rounded-full bg-[#FAFAFA] border-2 border-neutral-300 group-hover:border-neutral-900 flex items-center justify-center transition-colors duration-300">
+                    <span className="w-1 h-1 rounded-full bg-neutral-300 group-hover:bg-neutral-900 transition-colors" />
                   </div>
-                );
-              })}
-            </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                    <span className="font-display text-2xl font-black text-neutral-350">{step.num}</span>
+                    <h3 className="text-lg font-bold text-neutral-900 flex items-center gap-2">
+                      <Icon className="w-4 h-4 text-neutral-500" /> {step.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed font-medium max-w-xl">
+                    {step.desc}
+                  </p>
+
+                  {idx !== steps.length - 1 && <div className="h-6" />}
+                </motion.div>
+              );
+            })}
           </div>
+
         </motion.div>
       </div>
     </section>

@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, MessageSquare, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Testimonials() {
   const testimonials = [
     {
       name: 'Sarah Jenkins',
       role: 'Founder, Bloom Retail',
-      quote: "Aura built our brand landing page in 5 days, and the aesthetic literally left us speechless. The visitor conversion rate jumped from 2.1% on our old WordPress site to 5.6% in the first week. They are absolute geniuses.",
+      quote: "Aura built our landing page in 5 days, and the design literally left us speechless. The conversion rate jumped from 2.1% on our old WordPress template to 5.6% in the first week. They are pure geniuses.",
       rating: 5,
       project: 'E-Commerce Branding'
     },
     {
       name: 'Dr. Marcus Vance',
       role: 'Medical Director, Vance Dental',
-      quote: "We needed a website that immediately communicated clinical trust, security, and absolute professionalism. The layout Aura designed is flawless. Patients can book slots on WhatsApp instantly.",
+      quote: "We needed a site that communicated trust, safety, and elite care. The medical layout Aura created did exactly that. Our front desk saves hours daily thanks to direct WhatsApp appointment routing.",
       rating: 5,
       project: 'Clinical Platform'
     },
     {
       name: 'Leon Vance',
       role: 'CEO, Novus SaaS Hub',
-      quote: "The custom code, micro-animations, and 100% PageSpeed score make our product feel like a premium tech brand. If you want cheap work, look elsewhere. If you want award-winning design, hire Aura.",
+      quote: "The custom code, micro-animations, and 100% PageSpeed score make our product feel like a premium tech brand. If you want cheap work, look elsewhere. If you want world-class design, hire Aura.",
       rating: 5,
       project: 'SaaS Product Page'
     }
@@ -45,59 +45,54 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-[#050816] relative border-t border-white/5 overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-accent-primary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 relative z-10">
+    <section id="testimonials" className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC]">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8">
         <div className="space-y-16 text-center">
           {/* Header */}
           <div className="space-y-4">
-            <span className="text-xs font-bold text-accent-secondary uppercase tracking-widest">CLIENT VERDICTS</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
-              Endorsed by Fast-Growing Brands.
+            <span className="text-[10px] font-black text-neutral-450 uppercase tracking-widest">VERDICTS</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-neutral-900 tracking-tight leading-tight">
+              Endorsed by Growth Brands.
             </h2>
           </div>
 
-          {/* Testimonial Box */}
-          <div className="relative min-h-[320px] flex items-center justify-center">
+          {/* Testimonial Panel */}
+          <div className="relative min-h-[280px] flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className="w-full p-8 md:p-12 rounded-3xl border border-white/5 bg-white/2 backdrop-blur-md relative text-left space-y-6"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full p-8 md:p-12 rounded-3xl border border-neutral-200 bg-white shadow-lg shadow-neutral-200/5 relative text-left space-y-6"
               >
-                {/* Quotes watermark icon */}
-                <Quote className="absolute top-8 right-8 w-16 h-16 text-white/5 pointer-events-none" />
+                <Quote className="absolute top-8 right-8 w-14 h-14 text-neutral-100 pointer-events-none" />
 
                 {/* Rating */}
-                <div className="flex gap-1 text-amber-500">
+                <div className="flex gap-1 text-neutral-800">
                   {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
                 </div>
 
                 {/* Quote Text */}
-                <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium italic">
+                <p className="text-base sm:text-lg text-neutral-850 leading-relaxed font-semibold italic">
                   "{testimonials[activeIndex].quote}"
                 </p>
 
-                <div className="border-t border-white/5 pt-6 flex items-center justify-between">
+                <div className="border-t border-neutral-100 pt-6 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    {/* Simulated avatar circle */}
-                    <div className="w-10 h-10 rounded-full bg-gradient-accent p-0.5 flex items-center justify-center text-white font-bold text-xs select-none">
+                    <div className="w-10 h-10 rounded-full bg-neutral-100 border border-neutral-200 flex items-center justify-center text-neutral-800 font-bold text-xs select-none">
                       {testimonials[activeIndex].name.split(' ').map(n=>n[0]).join('')}
                     </div>
                     <div>
-                      <h4 className="text-white font-bold text-sm">{testimonials[activeIndex].name}</h4>
-                      <p className="text-slate-500 text-xs">{testimonials[activeIndex].role}</p>
+                      <h4 className="text-neutral-900 font-bold text-sm">{testimonials[activeIndex].name}</h4>
+                      <p className="text-neutral-500 text-xs">{testimonials[activeIndex].role}</p>
                     </div>
                   </div>
 
-                  <span className="text-[9px] font-black uppercase tracking-wider text-accent-secondary bg-accent-secondary/10 px-2.5 py-1 rounded-full">
+                  <span className="text-[9px] font-black uppercase tracking-wider text-neutral-550 bg-neutral-100 px-3 py-1 rounded-full border border-neutral-200/50">
                     {testimonials[activeIndex].project}
                   </span>
                 </div>
@@ -109,7 +104,7 @@ export default function Testimonials() {
           <div className="flex justify-center items-center gap-4 mt-6">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full border border-white/5 bg-white/2 hover:bg-white/5 hover:border-white/10 text-slate-400 hover:text-white transition-all cursor-pointer"
+              className="p-3 rounded-full border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-500 hover:text-neutral-900 transition-all cursor-pointer"
               aria-label="Previous Slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -121,8 +116,8 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
-                    activeIndex === i ? 'w-6 bg-accent-secondary' : 'bg-white/10'
+                  className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${
+                    activeIndex === i ? 'w-5 bg-neutral-900' : 'bg-neutral-200'
                   }`}
                   aria-label={`Go to slide ${i+1}`}
                 />
@@ -131,12 +126,13 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="p-3 rounded-full border border-white/5 bg-white/2 hover:bg-white/5 hover:border-white/10 text-slate-400 hover:text-white transition-all cursor-pointer"
+              className="p-3 rounded-full border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-500 hover:text-neutral-900 transition-all cursor-pointer"
               aria-label="Next Slide"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
+
         </div>
       </div>
     </section>

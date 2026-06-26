@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, X, ShieldCheck, Zap, Laptop, Search, Edit3, Smartphone, Clock, Sparkles } from 'lucide-react';
+import { Check, X, Shield, Search, Zap, Smartphone, Sparkles, Clock, Edit3, Heart } from 'lucide-react';
 
 export default function WhyChooseUs() {
   const containerVariants = {
@@ -11,97 +11,88 @@ export default function WhyChooseUs() {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 24, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] },
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
-  const advantages = [
-    { title: 'Lightning Fast', desc: 'Optimized build assets and clean markup deliver sub-1s load times, boosting search indexing.', icon: Zap },
-    { title: 'Modern UI', desc: 'Bespoke layouts using luxury visual languages, dynamic shadows, and smooth motion states.', icon: Sparkles },
-    { title: 'SEO Friendly', desc: 'Semantic HTML markup, fast page indexing, and structured schema inputs for search rankings.', icon: Search },
-    { title: 'Responsive Design', desc: 'Engineered mobile-first layouts that snap and scale beautifully across desktops, tablets, and phones.', icon: Smartphone },
-    { title: 'Easy to Manage', desc: 'Simple code blocks and components making static revisions or markdown integrations stress-free.', icon: Edit3 },
-    { title: 'Secure & Shielded', desc: 'Static hosting leaves zero vulnerability tracks for database exploits or hacking attempts.', icon: ShieldCheck },
-    { title: 'Fast 5-Day Delivery', desc: 'Structured agile checkpoints guarantee a completely finished site in under a week.', icon: Clock },
-    { title: 'Affordable Value', desc: 'Flat-rate pricing structures with zero ongoing design costs or server markups.', icon: Laptop },
+  const capabilities = [
+    { title: 'Lightning Fast', desc: 'Bespoke hand-coded architectures compile into small, optimized assets delivering sub-1s load times.', icon: Zap },
+    { title: 'Modern UI', desc: 'Satoshi/Space Grotesk typography composition with minimal styling and smooth scroll motion indicators.', icon: Sparkles },
+    { title: 'SEO Optimized', desc: 'Semantic HTML markup structures and speed parameters built for organic google search indexing.', icon: Search },
+    { title: 'Responsive Design', desc: 'Perfect mobile-first layout designs built to fit desktop screens, tablets, and phones seamlessly.', icon: Smartphone },
+    { title: 'Easy to Manage', desc: 'Bespoke modular codeblocks allowing static copy changes or markdown blogs with zero hassle.', icon: Edit3 },
+    { title: 'Secure & Stable', desc: 'Zero databases or script bloats mean zero loopholes for database injections or hack exploits.', icon: Shield },
+    { title: '5-Day Timelines', desc: 'Structured checkpoints and direct client reviews allow full design launches in under a week.', icon: Clock },
+    { title: 'Bespoke Quality', desc: 'No templates. Handcrafted visual compositions worthy of leading startups.', icon: Heart }
   ];
 
   return (
-    <section className="py-24 bg-[#050816] relative border-t border-white/5 overflow-hidden">
-      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-accent-primary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+    <section className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-20"
+          className="space-y-24"
         >
           {/* Header */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end text-left">
             <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-bold text-accent-secondary uppercase tracking-widest">WHY PARTNER WITH US</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
-                Designed to Command Authority. Engineered to Convert.
+              <span className="text-[10px] font-black text-neutral-450 uppercase tracking-widest">CAPABILITIES</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display text-neutral-900 tracking-tight leading-tight">
+                Engineered for Visual Speed & Precision.
               </h2>
             </div>
             <div className="lg:col-span-6">
-              <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">
-                Templates and site-builders create heavy, bloated pages that look generic and repel high-ticket clients. We build clean, bespoke coded systems that establish immediate premium brand trust.
+              <p className="text-neutral-500 text-sm sm:text-base leading-relaxed font-medium">
+                We write clean custom code. No templates, no bloats, and no plugins to fail or break. Your site compiles into light, secure static files distributed on global CDN edges.
               </p>
             </div>
           </div>
 
-          {/* Comparison Table Grid */}
-          <motion.div variants={itemVariants} className="w-full rounded-2xl border border-white/5 bg-white/2 p-6 md:p-8 relative overflow-hidden">
-            {/* Subtle glow background */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-accent-secondary/5 rounded-full blur-[80px] pointer-events-none" />
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/5">
-              {/* Aura Systems */}
+          {/* Clean Metric Board */}
+          <motion.div variants={itemVariants} className="w-full rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-neutral-100">
+              {/* Bespoke Core */}
               <div className="space-y-6 md:pr-8 pb-6 md:pb-0 text-left">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-accent-secondary" />
-                  <h3 className="text-lg font-bold font-display text-white">Aura Custom Development</h3>
-                </div>
+                <h3 className="text-base font-bold font-display text-neutral-900 uppercase tracking-wider flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-neutral-900" /> Aura Bespoke Build
+                </h3>
                 <ul className="space-y-4">
                   {[
-                    '100% bespoke design matched to your brand guidelines.',
-                    'Lightning-fast page loading speed (95+ score on PageSpeed).',
-                    'Zero security risks; static files are impossible to hack.',
-                    'Clean semantic HTML structures optimized for SEO rankings.',
-                    'Direct lead captures integrating natively with WhatsApp/UPI.'
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-xs font-semibold text-slate-300">
-                      <Check className="w-4 h-4 text-accent-secondary flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
+                    'Sub-1 second page loads with clean HTML compiling.',
+                    'Zero script bloats or external database connection delays.',
+                    'High security static file distribution impossible to hack.',
+                    'Exceptional layout flexibility with no template boundaries.'
+                  ].map((p, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs font-semibold text-neutral-600">
+                      <Check className="w-4 h-4 text-neutral-900 flex-shrink-0 mt-0.5" />
+                      <span>{p}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Standard Templates */}
+              {/* standard builders */}
               <div className="space-y-6 md:pl-8 pt-6 md:pt-0 text-left">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                  <h3 className="text-lg font-bold font-display text-slate-400">WordPress & Templates Builders</h3>
-                </div>
-                <ul className="space-y-4">
+                <h3 className="text-base font-bold font-display text-neutral-400 uppercase tracking-wider flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-neutral-200" /> Standard Builders
+                </h3>
+                <ul className="space-y-4 font-sans">
                   {[
-                    'Repetitive templates used by thousands of competitors.',
-                    'Bloated plugins slowing page load times and driving clients away.',
-                    'Frequent security exploits, database injections, and hack risks.',
-                    'Poor code structures and server bottlenecks hurting Google rank.',
-                    'Complex form setups requiring recurring monthly API fees.'
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-xs font-semibold text-slate-500">
-                      <X className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
+                    'Heavy plugins loading scripts on every scroll event.',
+                    'Prone to database breaches, injection attacks, and exploits.',
+                    'Generic layouts limited to preset templates and components.',
+                    'Frequent API adjustments requiring ongoing monthly fees.'
+                  ].map((p, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs font-semibold text-neutral-450">
+                      <X className="w-4 h-4 text-neutral-300 flex-shrink-0 mt-0.5" />
+                      <span>{p}</span>
                     </li>
                   ))}
                 </ul>
@@ -109,31 +100,32 @@ export default function WhyChooseUs() {
             </div>
           </motion.div>
 
-          {/* Advantages Cards Grid */}
+          {/* Capabilities Grid */}
           <motion.div 
             variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-8 border-t border-[#ECECEC]"
           >
-            {advantages.map((adv, i) => {
-              const Icon = adv.icon;
+            {capabilities.map((cap, i) => {
+              const Icon = cap.icon;
               return (
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className="p-6 rounded-xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-white/10 transition-all duration-300 flex flex-col gap-4 text-left group"
+                  whileHover={{ y: -4 }}
+                  className="space-y-4 text-left p-6 bg-white border border-[#ECECEC] rounded-xl shadow-sm transition-all duration-300"
                 >
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-slate-350 w-fit group-hover:text-accent-secondary transition-colors">
-                    <Icon className="w-5 h-5" />
+                  <div className="p-2.5 rounded-lg border border-neutral-150 text-neutral-800 w-fit">
+                    <Icon className="w-4.5 h-4.5" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-sm font-bold text-white tracking-wide">{adv.title}</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed font-medium">{adv.desc}</p>
+                    <h3 className="text-sm font-bold text-neutral-900 tracking-wide">{cap.title}</h3>
+                    <p className="text-xs text-neutral-500 leading-relaxed font-medium">{cap.desc}</p>
                   </div>
                 </motion.div>
               );
             })}
           </motion.div>
+
         </motion.div>
       </div>
     </section>

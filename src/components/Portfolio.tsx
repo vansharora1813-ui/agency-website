@@ -1,214 +1,208 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Dumbbell, Coffee, Layout, GraduationCap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-export default function Portfolio() {
+interface PortfolioProps {
+  onNavigate: (sectionId: string) => void;
+}
+
+export default function Portfolio({ onNavigate }: PortfolioProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
-  const itemVariants = {
-    hidden: { y: 40, opacity: 0 },
+  const textVariants = {
+    hidden: { y: 24, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
-  const projects = [
-    {
-      title: 'Pulse Athletics',
-      category: 'E-Commerce & Booking',
-      industry: 'Fitness / Gym Brand',
-      desc: 'A high-energy dark-mode digital hub with live class bookings, trainer schedules, and a unified merchandise store.',
-      icon: Dumbbell,
-      glow: 'shadow-red-500/5 hover:border-red-500/20',
-      color: 'text-red-500 bg-red-500/10 border-red-500/20',
-      preview: (
-        <div className="w-full h-full bg-slate-950 p-4 flex flex-col justify-between text-left border border-white/5 rounded-t-xl overflow-hidden font-sans">
-          <div className="flex justify-between items-center text-[8px] text-slate-500">
-            <span className="font-extrabold text-white uppercase tracking-widest">PULSE</span>
-            <span className="bg-red-500/10 text-red-400 font-bold px-1.5 py-0.5 rounded">LIVE CLASS</span>
-          </div>
-          <div className="space-y-1.5 my-3">
-            <p className="text-[12px] font-black text-white leading-none uppercase">BUILD YOUR POWER</p>
-            <p className="text-[7px] text-slate-400 leading-normal">Premium workouts led by world-class certified coaches.</p>
-          </div>
-          <div className="w-full py-1.5 rounded bg-red-600 text-white font-bold text-[7px] text-center uppercase">
-            Start Free Trial
-          </div>
-        </div>
-      )
-    },
-    {
-      title: 'Nouveau Bistro',
-      category: 'Interactive Menu & Orders',
-      industry: 'Fine Dining / Restaurant',
-      desc: 'An immersive digital menu experience featuring fluid dish catalogs, order-ahead takeaway carts, and private table bookings.',
-      icon: Coffee,
-      glow: 'shadow-amber-500/5 hover:border-amber-500/20',
-      color: 'text-amber-500 bg-amber-500/10 border-amber-500/20',
-      preview: (
-        <div className="w-full h-full bg-[#111] p-4 flex flex-col justify-between text-left border border-white/5 rounded-t-xl overflow-hidden font-serif">
-          <div className="flex justify-between items-center text-[7px] text-slate-500 font-sans">
-            <span className="font-semibold text-amber-100 uppercase tracking-widest">NOUVEAU</span>
-            <span className="text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">OPEN</span>
-          </div>
-          <div className="space-y-1.5 my-3 font-sans">
-            <p className="text-[11px] font-serif text-amber-55 leading-none">Freshly Baked Cinnamon Rolls</p>
-            <p className="text-[7px] text-amber-100/50 leading-normal">Rich French butter, organic cinnamon, hot cheese glaze.</p>
-          </div>
-          <div className="w-full py-1.5 rounded-full bg-amber-600 text-stone-950 font-bold text-[7px] text-center uppercase font-sans">
-            Order Takeaway
-          </div>
-        </div>
-      )
-    },
-    {
-      title: 'Novus SaaS Hub',
-      category: 'SaaS Product Marketing',
-      industry: 'Tech Startup',
-      desc: 'A modular, conversion-focused product marketing site featuring interactive metric diagrams, user flows, and integrations.',
-      icon: Layout,
-      glow: 'shadow-cyan-500/5 hover:border-cyan-500/20',
-      color: 'text-cyan-500 bg-cyan-500/10 border-cyan-500/20',
-      preview: (
-        <div className="w-full h-full bg-slate-900 p-4 flex flex-col justify-between text-left border border-white/5 rounded-t-xl overflow-hidden font-sans">
-          <div className="flex justify-between items-center text-[8px] text-slate-500">
-            <span className="font-extrabold text-cyan-400 tracking-tight">NOVUS.IO</span>
-            <span className="bg-cyan-500/10 text-cyan-400 font-bold px-1.5 py-0.5 rounded">V2.4</span>
-          </div>
-          <div className="my-3 space-y-2">
-            <div className="w-14 h-2 rounded bg-cyan-400/20" />
-            <div className="space-y-1">
-              <div className="w-full h-2 rounded bg-white/10" />
-              <div className="w-5/6 h-2 rounded bg-white/10" />
-            </div>
-          </div>
-          <div className="w-full py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold text-[7px] text-center uppercase tracking-wider">
-            Start Free Trial
-          </div>
-        </div>
-      )
-    },
-    {
-      title: 'Vanguard Academy',
-      category: 'Course Dashboard',
-      industry: 'Educational Institute',
-      desc: 'A structured classroom dashboard featuring course selections, rank list visualizations, and exam mock databases.',
-      icon: GraduationCap,
-      glow: 'shadow-purple-500/5 hover:border-purple-500/20',
-      color: 'text-purple-500 bg-purple-500/10 border-purple-500/20',
-      preview: (
-        <div className="w-full h-full bg-slate-950 p-4 flex flex-col justify-between text-left border border-white/5 rounded-t-xl overflow-hidden font-sans">
-          <div className="flex justify-between items-center text-[8px] text-slate-500">
-            <span className="font-bold text-white tracking-widest uppercase">VANGUARD</span>
-            <span className="text-yellow-500 bg-yellow-500/10 px-1.5 py-0.5 rounded font-bold uppercase">OPEN</span>
-          </div>
-          <div className="grid grid-cols-2 gap-2 my-2 text-center text-[7px]">
-            <div className="p-1.5 bg-slate-900 rounded border border-white/5">
-              <p className="font-bold text-white text-[10px]">98.2%</p>
-              <p className="text-[6px] text-slate-550">Board Pass Rate</p>
-            </div>
-            <div className="p-1.5 bg-slate-900 rounded border border-white/5">
-              <p className="font-bold text-white text-[10px]">85+</p>
-              <p className="text-[6px] text-slate-550">JEE Selections</p>
-            </div>
-          </div>
-          <div className="w-full py-1.5 rounded bg-purple-600 text-white font-bold text-[7px] text-center uppercase">
-            Enroll Today
-          </div>
-        </div>
-      )
-    }
-  ];
-
   return (
-    <section id="portfolio" className="py-24 bg-[#050816] relative border-t border-white/5 overflow-hidden">
-      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent-secondary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+    <section id="portfolio" className="py-28 bg-[#FAFAFA] border-t border-[#ECECEC] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="space-y-16"
+          className="space-y-28"
         >
           {/* Header */}
           <div className="text-center space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-accent-primary uppercase tracking-widest">PORTFOLIO</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-tight">
-              Selected Showcase Deliverables.
+            <span className="text-[10px] font-black text-neutral-450 uppercase tracking-widest">SHOWCASE</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-neutral-900 tracking-tight leading-tight">
+              Bespoke Case Studies.
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">
-              Explore some of the premium platforms we have designed, hand-coded, and launched live on static content edges.
+            <p className="text-neutral-500 text-sm leading-relaxed font-medium">
+              A review of digital products built custom for high-ticket operations.
             </p>
           </div>
 
-          {/* Grid Portfolio */}
-          <motion.div 
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
-            {projects.map((proj, i) => {
-              const Icon = proj.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -6 }}
-                  className={`rounded-2xl border border-white/5 bg-white/2 overflow-hidden flex flex-col justify-between shadow-xl transition-all duration-300 group hover:shadow-2xl ${proj.glow}`}
-                >
-                  {/* Interactive UI Mockup Box */}
-                  <div className="p-8 pb-0 bg-white/3 border-b border-white/5 h-64 flex items-end justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050816] to-transparent opacity-40 z-10" />
-                    
-                    {/* Simulated website frame */}
-                    <div className="w-[85%] h-[80%] rounded-t-xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.04] group-hover:translate-y-1 z-20">
-                      {proj.preview}
+          {/* Alternate Project Rows */}
+          <div className="space-y-36 text-left">
+            
+            {/* Project 1: Pulse Athletics (MacBook Style Preview on right) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Text Specs */}
+              <motion.div 
+                variants={textVariants}
+                className="lg:col-span-6 space-y-6"
+              >
+                <div className="flex gap-2">
+                  <span className="text-[9px] font-black uppercase tracking-wider text-neutral-500 bg-neutral-100 border border-neutral-200 px-3 py-1 rounded-full">
+                    E-Commerce & Scheduling
+                  </span>
+                  <span className="text-[9px] font-black uppercase tracking-wider text-neutral-400 py-1">
+                    Fitness Industry
+                  </span>
+                </div>
+                
+                <h3 className="text-3xl sm:text-4xl font-black font-display text-neutral-900 tracking-tight leading-none">
+                  PULSE ATHLETICS
+                </h3>
+                
+                <p className="text-neutral-500 text-sm leading-relaxed font-medium">
+                  We engineered a unified web platform for Pulse Athletics Dwarka. The project replaces standard template models with a light, custom React interface, allowing members to search class catalogs, view active hours, and buy memberships directly on WhatsApp.
+                </p>
+
+                <div className="grid grid-cols-2 gap-4 border-t border-neutral-200 pt-6 text-xs">
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-neutral-400">DELIVERABLE</span>
+                    <p className="font-semibold text-neutral-800 mt-1">Class Scheduler Hub</p>
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-neutral-400">OUTCOME</span>
+                    <p className="font-semibold text-emerald-600 mt-1">+35% Monthly Bookings</p>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    onClick={() => onNavigate('contact')}
+                    className="group inline-flex items-center gap-1.5 text-neutral-900 hover:text-neutral-600 text-xs font-bold uppercase tracking-wider cursor-pointer"
+                  >
+                    <span>Request Demo Review</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* MacBook Mockup */}
+              <motion.div 
+                variants={textVariants}
+                className="lg:col-span-6 flex justify-center"
+              >
+                {/* Simulated MacBook container */}
+                <div className="w-full max-w-[440px] rounded-xl border border-neutral-200 bg-white p-3 shadow-xl relative group">
+                  <div className="absolute inset-0 bg-neutral-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10" />
+                  {/* Top nav */}
+                  <div className="flex space-x-1 mb-2 border-b border-neutral-100 pb-2">
+                    <span className="w-2 h-2 rounded-full bg-neutral-200" />
+                    <span className="w-2 h-2 rounded-full bg-neutral-200" />
+                    <span className="w-2 h-2 rounded-full bg-neutral-200" />
+                  </div>
+                  {/* Visual canvas */}
+                  <div className="bg-slate-950 rounded-lg p-4 text-white text-left h-48 flex flex-col justify-between font-sans relative overflow-hidden">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-red-500/10 rounded-full blur-2xl pointer-events-none" />
+                    <div className="flex justify-between items-center text-[7px] text-slate-500">
+                      <span className="font-extrabold text-white">PULSE</span>
+                      <span className="text-red-500 font-bold uppercase tracking-wider">dw DW Dwarka</span>
+                    </div>
+                    <div className="space-y-1.5 my-3">
+                      <h4 className="text-[11px] font-black leading-none uppercase">SHAPE YOUR CORE</h4>
+                      <p className="text-[6px] text-slate-400">Certified athletic training with top-tier free weight layouts.</p>
+                    </div>
+                    <div className="w-full py-1.5 rounded bg-red-600 text-white font-bold text-[7px] text-center uppercase tracking-wider">
+                      Book Free Workout Session
                     </div>
                   </div>
+                </div>
+              </motion.div>
+            </div>
 
-                  {/* Descriptions block */}
-                  <div className="p-8 text-left space-y-4 flex-grow flex flex-col justify-between">
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap gap-2 items-center">
-                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-450 bg-white/5 border border-white/5 px-2.5 py-1 rounded-full">
-                          {proj.category}
-                        </span>
-                        <span className="text-[9px] font-black uppercase tracking-wider text-slate-500">
-                          {proj.industry}
-                        </span>
-                      </div>
-                      
-                      <div className="flex items-center gap-2">
-                        <div className="p-1.5 rounded-lg bg-white/5 border border-white/5 text-slate-400">
-                          <Icon className="w-4.5 h-4.5" />
-                        </div>
-                        <h3 className="text-xl font-bold font-display text-white group-hover:text-accent-secondary transition-colors">
-                          {proj.title}
-                        </h3>
-                      </div>
-                      
-                      <p className="text-xs text-slate-400 leading-relaxed font-medium">
-                        {proj.desc}
-                      </p>
+            {/* Project 2: Nouveau Bistro (iPhone Style Preview on left) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* iPhone Mockup (Left on desktop) */}
+              <motion.div 
+                variants={textVariants}
+                className="lg:col-span-6 flex justify-center lg:order-1 order-2"
+              >
+                {/* Simulated iPhone container */}
+                <div className="w-56 rounded-[36px] border-[6px] border-neutral-900 bg-white p-3 shadow-2xl relative group overflow-hidden h-[380px] flex flex-col justify-between">
+                  {/* Dynamic Island */}
+                  <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-16 h-3.5 rounded-full bg-neutral-900 z-30" />
+                  
+                  {/* Content screen */}
+                  <div className="bg-[#111] rounded-[28px] p-4 text-[#FAFAFA] text-left h-full flex flex-col justify-between font-serif relative overflow-hidden pt-6">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-amber-900/10 rounded-full blur-xl pointer-events-none" />
+                    <div className="flex justify-between items-center text-[7px] font-sans text-stone-500">
+                      <span>BREW & CRUMB</span>
+                      <span className="text-emerald-400">OPEN</span>
                     </div>
-
-                    <div className="pt-6 border-t border-white/5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 group-hover:text-white transition-colors mt-6">
-                      <span>View Specifications</span>
-                      <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-accent-secondary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <div className="space-y-2 my-6">
+                      <h4 className="text-[14px] leading-tight">Fresh Speciality Coffee</h4>
+                      <p className="text-[7px] font-sans text-stone-400">Madagascar vanilla lattes and flaky butter pastries baked daily.</p>
+                    </div>
+                    <div className="w-full py-2.5 rounded-full bg-amber-600 text-stone-950 font-bold text-[8px] text-center uppercase font-sans tracking-wide">
+                      Order takeaway Menu
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Text Specs (Right on desktop) */}
+              <motion.div 
+                variants={textVariants}
+                className="lg:col-span-6 space-y-6 lg:order-2 order-1"
+              >
+                <div className="flex gap-2">
+                  <span className="text-[9px] font-black uppercase tracking-wider text-neutral-500 bg-neutral-100 border border-neutral-200 px-3 py-1 rounded-full">
+                    Reservations & takeaway Carts
+                  </span>
+                  <span className="text-[9px] font-black uppercase tracking-wider text-neutral-400 py-1">
+                    Culinary Industry
+                  </span>
+                </div>
+                
+                <h3 className="text-3xl sm:text-4xl font-black font-display text-neutral-900 tracking-tight leading-none">
+                  NOUVEAU BISTRO
+                </h3>
+                
+                <p className="text-neutral-500 text-sm leading-relaxed font-medium">
+                  We designed and deployed an elegant mobile-first web catalog for Nouveau Bistro Cafe. The platform handles direct takeaways and reservation slot checks, bypassing delivery commission platforms completely.
+                </p>
+
+                <div className="grid grid-cols-2 gap-4 border-t border-neutral-200 pt-6 text-xs">
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-neutral-400">DELIVERABLE</span>
+                    <p className="font-semibold text-neutral-800 mt-1">Interactive Menu Carts</p>
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-neutral-400">OUTCOME</span>
+                    <p className="font-semibold text-emerald-600 mt-1">RoI Achieved in 14 Days</p>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    onClick={() => onNavigate('contact')}
+                    className="group inline-flex items-center gap-1.5 text-neutral-900 hover:text-neutral-600 text-xs font-bold uppercase tracking-wider cursor-pointer"
+                  >
+                    <span>Request Demo Review</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+
+          </div>
+
         </motion.div>
       </div>
     </section>
