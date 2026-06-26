@@ -1,40 +1,24 @@
 import { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import WhyChooseUs from './components/WhyChooseUs';
 import Process from './components/Process';
+import Portfolio from './components/Portfolio';
 import Testimonials from './components/Testimonials';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
-import PortfolioPage from './pages/PortfolioPage';
-import ContactPage from './pages/ContactPage';
 
-function AppContent() {
+function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
-  const location = useLocation();
-  const navigate = useNavigate();
 
-  // 1. Sync routing pathname with activeSection
   useEffect(() => {
-    if (location.pathname === '/portfolio') {
-      setActiveSection('portfolio');
-    } else if (location.pathname === '/contact') {
-      setActiveSection('contact');
-    } else if (location.pathname === '/') {
-      setActiveSection('home');
-    }
-  }, [location.pathname]);
-
-  // 2. Calculate active section intersections on home page scroll
-  useEffect(() => {
-    if (location.pathname !== '/') return;
-
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'process', 'testimonials'];
-      const scrollPosition = window.scrollY + 180; // Offset for natural intersection triggers
+      // 1. Calculate active section intersections
+      const sections = ['home', 'about', 'services', 'portfolio', 'process', 'testimonials', 'contact'];
+      const scrollPosition = window.scrollY + 160; // Offset offset for natural intersection triggers
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -47,57 +31,24 @@ function AppContent() {
           }
         }
       }
-    };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial invocation
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
-
-  // 3. Global Scroll Progress Tracker
-  useEffect(() => {
-    const handleScrollProgress = () => {
+      // 2. Calculate scroll progress percentage
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
         setScrollProgress(window.scrollY / totalScroll);
-      } else {
-        setScrollProgress(0);
       }
     };
 
-    window.addEventListener('scroll', handleScrollProgress);
-    handleScrollProgress();
-    return () => window.removeEventListener('scroll', handleScrollProgress);
-  }, [location.pathname]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavigate = (sectionId: string) => {
-    if (sectionId === 'portfolio') {
-      navigate('/portfolio');
-      setActiveSection('portfolio');
-      return;
-    }
-    if (sectionId === 'contact') {
-      navigate('/contact');
-      setActiveSection('contact');
-      return;
-    }
-
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        scrollToSection(sectionId);
-      }, 150);
-    } else {
-      scrollToSection(sectionId);
-    }
-  };
-
-  const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
     if (el) {
       const headerOffset = 90;
       const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -120,25 +71,16 @@ function AppContent() {
       {/* Floating Glass Navigation Header */}
       <Header activeSection={activeSection} onNavigate={handleNavigate} />
 
-      {/* Main Sections / Pages */}
+      {/* Main Sections */}
       <main className="flex-grow">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero onNavigate={handleNavigate} />
-                <About />
-                <Services onNavigate={handleNavigate} />
-                <WhyChooseUs />
-                <Process />
-                <Testimonials />
-              </>
-            }
-          />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+        <Hero onNavigate={handleNavigate} />
+        <About />
+        <Services onNavigate={handleNavigate} />
+        <WhyChooseUs />
+        <Portfolio onNavigate={handleNavigate} />
+        <Process />
+        <Testimonials />
+        <Contact />
       </main>
 
       {/* Footer */}
@@ -147,10 +89,4 @@ function AppContent() {
   );
 }
 
-export default function App() {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
-  );
-}
+export default App;
