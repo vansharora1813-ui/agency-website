@@ -66,11 +66,13 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
             >
               {item.label}
               {activeSection === item.id && (
-                <motion.span
+                <motion.div
                   layoutId="activeDot"
-                  className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-neutral-950"
-                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                />
+                  className="absolute -bottom-1 left-0 right-0 flex justify-center pointer-events-none"
+                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                >
+                  <span className="w-1 h-1 rounded-full bg-neutral-950" />
+                </motion.div>
               )}
             </a>
           ))}
