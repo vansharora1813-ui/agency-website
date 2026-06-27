@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, MessageSquare, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ThreeEmblem from '../components/ThreeEmblem';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -135,27 +136,12 @@ Details: ${formData.message || 'Interested in a website consultation.'}`;
                   <p className="text-sm font-semibold text-neutral-800 mt-0.5">Dwarka Sector 12, New Delhi, 110075</p>
                   <span className="text-[10px] text-neutral-500 font-medium">Meetings strictly by appointment</span>
                 </div>
-              </div>
-
             </div>
 
-            {/* Stylized custom Light Map Mockup */}
-            <div className="relative w-full h-40 rounded-2xl border border-neutral-200 bg-white overflow-hidden flex items-center justify-center transition-all duration-300 hover:border-neutral-350">
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[size:1.25rem_1.25rem]" />
-              <div className="absolute w-[60%] h-[1px] bg-neutral-200/60 top-1/3 left-10 transform -rotate-12" />
-              <div className="absolute w-[80%] h-[1px] bg-neutral-200/60 top-1/2 left-2 transform rotate-6" />
-              
-              <div className="relative flex flex-col items-center">
-                <motion.div 
-                  animate={{ scale: [1, 1.25, 1] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="w-5 h-5 rounded-full bg-neutral-900/10 border border-neutral-900 flex items-center justify-center"
-                >
-                  <span className="w-2 h-2 rounded-full bg-neutral-950 animate-pulse" />
-                </motion.div>
-                <span className="text-[7.5px] font-black text-neutral-400 uppercase tracking-widest mt-2">DWARKA SECTOR 12</span>
-              </div>
-            </div>
+          </div>
+
+          {/* Interactive 3D Emblem Experience */}
+          <ThreeEmblem />
 
           </div>
 
