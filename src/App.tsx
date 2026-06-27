@@ -10,6 +10,7 @@ import Testimonials from './sections/Testimonials';
 import Footer from './components/Footer';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
+import BackgroundElements from './components/BackgroundElements';
 
 function AppContent() {
   const [activeSection, setActiveSection] = useState('home');
@@ -108,7 +109,10 @@ function AppContent() {
   };
 
   return (
-    <div className="bg-bg-light text-[#111111] min-h-screen relative flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
+    <div className="bg-transparent text-[#111111] min-h-screen relative flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
+      {/* Centralized Clean Background Elements */}
+      <BackgroundElements />
+
       {/* Floating Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-[2.5px] bg-neutral-100 z-50">
         <div

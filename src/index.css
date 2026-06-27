@@ -1,16 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-light: #F5F5F3;
+  --color-bg-light: #F6F4F0;
   --color-surface-light: #FFFFFF;
-  --color-text-primary: #111111;
+  --color-text-primary: #000000;
   --color-text-secondary: #666666;
   --color-accent: #000000;
-  --color-accent-indigo: #4F46E5;
+  --color-accent-indigo: #FF6B3D;
+  --color-vulcanico: #FF6B3D;
+  --color-vulcanico-dark: #2F2A27;
+  --color-vulcanico-ember: #FF8A4C;
+  --color-vulcanico-ash: #D8D3CD;
+  --color-vulcanico-gold: #FFB347;
+  --color-vulcanico-play: #FFF2E8;
   --color-border-subtle: #ECECEC;
   
-  --font-sans: "Plus Jakarta Sans", sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Gondens", "Sigma", sans-serif;
+  --font-display: "Gondens", "Sigma", sans-serif;
+  --font-mergola: "Sigma", "Gondens", serif;
+  --font-geom: "Gondens", "Sigma", sans-serif;
   
   --border-color-default: #ECECEC;
 
@@ -24,13 +32,6 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid #ECECEC;
-}
-
-@utility text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to right, #111111, #666666);
 }
 
 .link-underline {
@@ -62,7 +63,7 @@ html {
 body {
   background-color: var(--color-bg-light);
   color: #111111;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Gondens", "Sigma", sans-serif;
   overflow-x: hidden;
 }
 

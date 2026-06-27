@@ -96,12 +96,12 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
           <a
             href="#contact"
             onClick={(e) => handleLinkClick(e, 'contact')}
-            className="group relative inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#111111] hover:bg-neutral-900 text-bg-light hover:text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_25px_rgba(22,101,52,0.25)] hover:scale-[1.02] border border-neutral-850 cursor-pointer overflow-hidden"
+            className="group relative inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#FF6B3D] text-white text-[11px] font-display font-black uppercase tracking-[0.08em] transition-all duration-300 shadow-[0_10px_24px_rgba(255,107,61,0.18)] hover:bg-[#F45D2F] hover:shadow-[0_14px_30px_rgba(255,107,61,0.24)] hover:scale-[1.02] border border-[#FF8A4C]/40 cursor-pointer overflow-hidden"
           >
             <span className="tracking-widest">Consultation</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" />
             {/* Subtle premium border glow highlight */}
-            <span className="absolute inset-0 rounded-full border border-white/10 group-hover:border-[#166534]/50 transition-colors duration-300" />
+            <span className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/45 transition-colors duration-300" />
           </a>
         </div>
 
@@ -135,7 +135,7 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
               <a
                 href="#contact"
                 onClick={(e) => handleLinkClick(e, 'contact')}
-                className="flex items-center justify-center gap-1.5 w-full py-3 rounded-xl bg-neutral-950 text-white font-bold text-xs uppercase tracking-wider"
+                className="flex items-center justify-center gap-1.5 w-full py-3 rounded-xl bg-[#FF6B3D] text-white font-bold text-xs uppercase tracking-wider"
               >
                 <span>Book Free Consultation</span>
                 <ArrowRight className="w-4 h-4" />

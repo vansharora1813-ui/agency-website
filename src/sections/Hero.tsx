@@ -10,6 +10,14 @@ export default function Hero({ onNavigate }: HeroProps) {
   const words = ['Growth', 'Leads', 'Sales', 'Trust'];
   const [index, setIndex] = useState(0);
   const [isBespoke, setIsBespoke] = useState(true);
+  const vulcanico = {
+    lava: '#FF6B3D',
+    ember: '#FF8A4C',
+    gold: '#FFB347',
+    ash: '#D8D3CD',
+    pearl: '#F6F4F0',
+    ink: '#2F2A27',
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,26 +55,52 @@ export default function Hero({ onNavigate }: HeroProps) {
     },
   };
 
-  // Premium Solid Colors for Rotating Keywords (Red/Green Shades)
+  const keywordVariants = {
+    initial: {
+      opacity: 0,
+      y: 14,
+      scale: 0.985,
+      filter: 'blur(7px)',
+      letterSpacing: '0.04em',
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+      letterSpacing: '0em',
+      transition: { duration: 0.72, ease: [0.19, 1, 0.22, 1] as const },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      scale: 1.012,
+      filter: 'blur(6px)',
+      letterSpacing: '0.025em',
+      transition: { duration: 0.38, ease: [0.55, 0, 1, 0.45] as const },
+    },
+  };
+
+  // Light vulcanico palette: lava, amber, pearl, and ash.
   const keywordColors = [
-    'text-[#1E3F20]', // Growth (Forest Green)
-    'text-[#991B1B]', // Leads (Crimson Red)
-    'text-[#166534]', // Sales (Emerald Green)
-    'text-[#881337]'  // Trust (Burgundy Red)
+    'text-[#2F2A27]',
+    'text-[#FF6B3D]',
+    'text-[#FF8A4C]',
+    'text-[#A76A43]'
   ];
 
   const borderColors = [
-    'border-[#1E3F20]',
-    'border-[#991B1B]',
-    'border-[#166534]',
-    'border-[#881337]'
+    'border-[#D8D3CD]',
+    'border-[#FF6B3D]',
+    'border-[#FFB347]',
+    'border-[#A76A43]'
   ];
 
-  const dotColors = [
-    'text-[#1E3F20]',
-    'text-[#991B1B]',
-    'text-[#166534]',
-    'text-[#881337]'
+  const dotFillColors = [
+    '#FF6B3D',
+    '#FFB347',
+    '#A76A43',
+    '#D8D3CD'
   ];
 
   // SVG Chart Paths
@@ -74,9 +108,7 @@ export default function Hero({ onNavigate }: HeroProps) {
   const templatePath = "M0 25 C15 28, 25 24, 40 28 C55 26, 65 29, 80 28 C90 28, 95 29, 100 29";
 
   return (
-    <section id="home" className="relative min-h-screen bg-[#F0F4F8] flex items-center justify-center pt-32 sm:pt-36 lg:pt-28 pb-16 overflow-hidden">
-      {/* Editorial Background Grid Lines (Subtle) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[size:6rem_6rem] pointer-events-none" />
+    <section id="home" className="relative min-h-screen bg-transparent flex items-center justify-center pt-32 sm:pt-36 lg:pt-28 pb-16 overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 xl:gap-12 items-center">
@@ -86,14 +118,14 @@ export default function Hero({ onNavigate }: HeroProps) {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-8 xl:col-span-8 text-left"
+            className="lg:col-span-8 xl:col-span-8 text-left lg:pl-10 xl:pl-16 2xl:pl-20"
           >
             {/* Minimal label */}
             <motion.div 
               variants={fadeUpVariants} 
-              className="group mb-1.5 sm:mb-2 inline-flex items-center gap-2 rounded-full border border-neutral-300/60 bg-white/55 px-3.5 py-1.5 text-[8.5px] sm:text-[9.5px] font-black uppercase tracking-[0.28em] text-neutral-600 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-neutral-950/25 hover:bg-white hover:text-neutral-950 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
+              className="group mb-1.5 sm:mb-2 inline-flex items-center gap-2 rounded-full border border-[#EEE7E0] bg-white/80 px-3.5 py-1.5 text-[8.5px] sm:text-[9.5px] font-black uppercase tracking-[0.24em] text-[#6F6760] shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#FF8A4C]/45 hover:bg-white hover:text-[#2F2A27] hover:shadow-[0_12px_30px_rgba(255,107,61,0.12)]"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#166534] transition-transform duration-300 group-hover:scale-[1.7]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B3D] transition-transform duration-300 group-hover:scale-[1.7]" />
               Custom Web Systems
             </motion.div>
 
@@ -101,7 +133,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             <div className="mt-3 sm:mt-4 overflow-hidden">
               <motion.h1 
                 variants={textMaskVariants}
-                className="text-[2.55rem] min-[390px]:text-[2.9rem] sm:text-[3.8rem] lg:text-[4.25rem] xl:text-[5rem] 2xl:text-[5.55rem] font-black font-display text-neutral-950 tracking-tight leading-[0.94] text-left"
+                className="text-[2.3rem] min-[390px]:text-[2.6rem] sm:text-[3.25rem] lg:text-[3.65rem] xl:text-[4.25rem] 2xl:text-[4.7rem] font-black font-display text-neutral-950 tracking-normal leading-[0.94] text-left"
               >
                 <span className="block leading-[0.94]">Websites</span>
                 <span className="block leading-[0.94]">Built for</span>
@@ -109,17 +141,22 @@ export default function Hero({ onNavigate }: HeroProps) {
                   transition={{ type: 'spring', stiffness: 180, damping: 24 }}
                   className="block relative select-none text-left pt-1 sm:pt-1.5 leading-[0.94]"
                 >
-                  <span className="inline-block w-[6.1ch] max-w-full relative overflow-hidden h-[1.02em] align-bottom">
+                  <span className="inline-block w-[6.2ch] max-w-full relative overflow-hidden h-[1.04em] align-bottom">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={words[index]}
-                          initial={{ y: '100%', opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: '-100%', opacity: 0 }}
-                          transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                          className={`absolute left-0 top-0 inline-block border-b-[2.5px] sm:border-b-[3.5px] lg:border-b-[4px] pb-1 font-display leading-[0.9] whitespace-nowrap transition-colors duration-300 ${keywordColors[index]} ${borderColors[index]}`}
+                          variants={keywordVariants}
+                          initial="initial"
+                          animate="animate"
+                          exit="exit"
+                          className={`absolute left-0 top-0 inline-flex items-end gap-[0.04em] border-b-[2.5px] sm:border-b-[3.5px] lg:border-b-[4px] pb-1 font-display leading-[0.9] whitespace-nowrap transition-colors duration-300 will-change-transform ${keywordColors[index]} ${borderColors[index]}`}
                         >
-                          {words[index]}<span className={dotColors[index]}>.</span>
+                          <span>{words[index]}</span>
+                          <span
+                            className="mb-[0.09em] inline-block h-[0.13em] w-[0.13em] rounded-full"
+                            style={{ backgroundColor: dotFillColors[index] }}
+                            aria-hidden="true"
+                          />
                         </motion.span>
                       </AnimatePresence>
                   </span>
@@ -130,10 +167,10 @@ export default function Hero({ onNavigate }: HeroProps) {
             {/* Supporting text - Increased font size and contrast for premium readability */}
             <motion.p 
               variants={fadeUpVariants}
-              className="mt-6 sm:mt-7 text-[13px] sm:text-[14px] lg:text-[15px] text-neutral-600 font-medium max-w-xl leading-[1.65] text-left"
+              className="mt-6 sm:mt-7 text-[15px] sm:text-[16px] lg:text-[17px] text-[#6F6760] font-mergola font-semibold max-w-xl leading-[1.62] text-left"
             >
-              We craft high-performance, custom-coded websites for startups, brands,<br className="hidden sm:block" />
-              and modern businesses.
+              We craft <span className="text-[#FF6B3D] font-display font-black italic">high-performance</span>, custom-coded websites for startups, brands,<br className="hidden sm:block" />
+              and modern businesses with a sharper, brighter web presence.
             </motion.p>
 
             {/* CTA Actions */}
@@ -143,7 +180,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             >
               <button
                 onClick={() => onNavigate('contact')}
-                className="group relative inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-900 text-white font-bold text-[11px] uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_25px_rgba(156,140,125,0.25)] hover:scale-[1.01] cursor-pointer"
+                className="group relative inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-[#FF6B3D] text-white font-display font-black text-[12px] uppercase tracking-[0.08em] transition-all duration-300 shadow-[0_12px_28px_rgba(255,107,61,0.22)] hover:bg-[#F45D2F] hover:shadow-[0_16px_34px_rgba(255,107,61,0.28)] hover:scale-[1.02] cursor-pointer"
               >
                 <span>Book a Free Call</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -151,7 +188,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               
               <button
                 onClick={() => onNavigate('portfolio')}
-                className="group inline-flex items-center gap-1 py-2.5 px-3 text-neutral-600 hover:text-neutral-950 font-bold text-[11px] uppercase tracking-wider transition-colors duration-250 cursor-pointer"
+                className="group inline-flex items-center gap-1 py-2.5 px-3 text-[#6F6760] hover:text-[#FF6B3D] font-display font-black text-[12px] uppercase tracking-[0.08em] transition-colors duration-250 cursor-pointer"
               >
                 <span>View Our Work</span>
                 <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -167,8 +204,8 @@ export default function Hero({ onNavigate }: HeroProps) {
             className="lg:col-span-4 xl:col-span-4 w-full flex justify-center lg:justify-end relative z-10 pt-8 lg:pt-10 xl:pt-14"
           >
             {/* Ambient Glowing Background Lights */}
-            <div className="absolute -top-10 -right-10 w-64 h-64 bg-neutral-400/5 rounded-full blur-3xl pointer-events-none animate-pulse" />
-            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-[#9C8C7D]/5 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '1.5s' }} />
+            <div className="absolute -top-10 -right-10 w-64 h-64 bg-[#F6F4F0] rounded-full blur-3xl pointer-events-none animate-pulse" />
+            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-[#F6F4F0] rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '1.5s' }} />
 
             {/* Pop-up Lift Wrapper */}
             <motion.div
@@ -182,7 +219,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             >
               {/* Main Dashboard Window (Glassmorphism) */}
               <div 
-                className="w-full rounded-[24px] border border-neutral-200/50 bg-white/75 backdrop-blur-xl shadow-[0_35px_70px_-15px_rgba(0,0,0,0.1),0_1px_3px_rgba(0,0,0,0.02),inset_0_1px_0_rgba(255,255,255,0.8)] p-6 flex flex-col gap-5 relative overflow-hidden"
+                className="w-full rounded-[24px] border border-[#EEE7E0] bg-white/86 backdrop-blur-xl shadow-[0_35px_70px_-15px_rgba(47,42,39,0.12),0_1px_3px_rgba(47,42,39,0.04),inset_0_1px_0_rgba(255,255,255,0.9)] p-6 flex flex-col gap-5 relative overflow-hidden"
               >
                 {/* Safari-style Chrome Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-neutral-200/40">
@@ -202,7 +239,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                   <button 
                     onClick={() => setIsBespoke(false)}
                     className={`flex-1 text-center py-2 rounded-full text-[8.5px] font-black uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                      !isBespoke ? 'bg-[#B91C1C] text-white shadow-md' : 'text-neutral-500 hover:text-neutral-900'
+                      !isBespoke ? 'bg-[#D8D3CD] text-[#2F2A27] shadow-md' : 'text-neutral-500 hover:text-neutral-900'
                     }`}
                   >
                     Template Code
@@ -210,7 +247,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                   <button 
                     onClick={() => setIsBespoke(true)}
                     className={`flex-1 text-center py-2 rounded-full text-[8.5px] font-black uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                      isBespoke ? 'bg-[#1D1D1F] text-[#4ADE80] border border-neutral-800 shadow-md' : 'text-neutral-500 hover:text-neutral-900'
+                      isBespoke ? 'bg-[#FF6B3D] text-white border border-[#FF8A4C]/40 shadow-md' : 'text-neutral-500 hover:text-neutral-900'
                     }`}
                   >
                     Aura Engineered
@@ -221,7 +258,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 <div className="grid grid-cols-12 gap-4 items-center">
                   
                   {/* Circular Gauge (Col 5) */}
-                  <div className="col-span-5 flex flex-col items-center justify-center p-3.5 rounded-2xl bg-gradient-to-b from-neutral-50 to-neutral-100/50 border border-neutral-200/40 shadow-inner transition-colors duration-300">
+                  <div className="col-span-5 flex flex-col items-center justify-center p-3.5 rounded-2xl bg-[#FFFDFB] border border-neutral-200/40 shadow-inner transition-colors duration-300">
                     <div className="relative flex items-center justify-center">
                       <svg className="w-16 h-16 transform -rotate-90">
                         <circle cx="32" cy="32" r="28" className="stroke-neutral-200/50 fill-none" strokeWidth="5.5" />
@@ -234,16 +271,16 @@ export default function Hero({ onNavigate }: HeroProps) {
                           strokeLinecap="round"
                           animate={{ 
                             strokeDashoffset: isBespoke ? 176 - (99.8 / 100) * 176 : 176 - (34.1 / 100) * 176,
-                            stroke: isBespoke ? '#166534' : '#B91C1C'
+                            stroke: isBespoke ? vulcanico.lava : vulcanico.ash
                           }}
                           transition={{ type: 'spring', stiffness: 80, damping: 15 }}
-                          style={{ strokeDasharray: 176, filter: isBespoke ? 'drop-shadow(0 2px 8px rgba(22,101,52,0.35))' : 'drop-shadow(0 2px 8px rgba(185,28,28,0.35))' }}
+                          style={{ strokeDasharray: 176, filter: isBespoke ? 'drop-shadow(0 2px 8px rgba(255,107,61,0.36))' : 'drop-shadow(0 2px 8px rgba(216,211,205,0.8))' }}
                         />
                       </svg>
                       {/* Inner Score Count */}
                       <div className="absolute flex flex-col items-center justify-center">
                         <motion.span 
-                          className={`text-[12px] font-black tracking-tighter ${isBespoke ? 'text-[#166534]' : 'text-[#B91C1C]'}`}
+                          className={`text-[12px] font-black tracking-tighter ${isBespoke ? 'text-[#FF6B3D]' : 'text-[#A69B91]'}`}
                           animate={{ scale: [1, 1.08, 1] }}
                           transition={{ duration: 0.3 }}
                           key={isBespoke ? "99.8" : "34.1"}
@@ -261,7 +298,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     {/* LCP Metric */}
                     <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-neutral-200/30 shadow-sm hover:shadow-md transition-shadow">
                       <div className="flex items-center gap-1.5">
-                        <div className={`p-1 rounded-lg ${isBespoke ? 'bg-[#166534]/10 text-[#166534]' : 'bg-red-50 text-[#B91C1C]'}`}>
+                        <div className={`p-1 rounded-lg ${isBespoke ? 'bg-[#FF6B3D]/10 text-[#FF6B3D]' : 'bg-[#D8D3CD]/35 text-[#6F6760]'}`}>
                           <Sparkles className="w-3 h-3" />
                         </div>
                         <div className="text-left">
@@ -271,13 +308,13 @@ export default function Hero({ onNavigate }: HeroProps) {
                           </p>
                         </div>
                       </div>
-                      <span className={`w-1.5 h-1.5 rounded-full ${isBespoke ? 'bg-[#166534] shadow-[0_0_6px_#166534]' : 'bg-[#B91C1C] shadow-[0_0_6px_#B91C1C]'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isBespoke ? 'bg-[#FF6B3D] shadow-[0_0_6px_#FF6B3D]' : 'bg-[#D8D3CD] shadow-[0_0_6px_#D8D3CD]'}`} />
                     </div>
 
                     {/* SEO Visibility */}
                     <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-neutral-200/30 shadow-sm hover:shadow-md transition-shadow">
                       <div className="flex items-center gap-1.5">
-                        <div className={`p-1 rounded-lg ${isBespoke ? 'bg-neutral-100 text-neutral-600' : 'bg-red-50 text-[#B91C1C]'}`}>
+                        <div className={`p-1 rounded-lg ${isBespoke ? 'bg-[#FFB347]/18 text-[#B64D28]' : 'bg-[#D8D3CD]/35 text-[#6F6760]'}`}>
                           <TrendingUp className="w-3 h-3" />
                         </div>
                         <div className="text-left">
@@ -287,19 +324,19 @@ export default function Hero({ onNavigate }: HeroProps) {
                           </p>
                         </div>
                       </div>
-                      <span className={`w-1.5 h-1.5 rounded-full ${isBespoke ? 'bg-[#166534] shadow-[0_0_6px_#166534]' : 'bg-[#B91C1C] shadow-[0_0_6px_#B91C1C]'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isBespoke ? 'bg-[#FFB347] shadow-[0_0_6px_#FFB347]' : 'bg-[#D8D3CD] shadow-[0_0_6px_#D8D3CD]'}`} />
                     </div>
                   </div>
                 </div>
 
                 {/* Conversion Graph Chart */}
-                <div className="p-4 rounded-2xl bg-gradient-to-b from-neutral-50 to-neutral-100/50 border border-neutral-200/40 shadow-inner flex flex-col gap-2 relative">
+                <div className="p-4 rounded-2xl bg-[#FFFDFB] border border-neutral-200/40 shadow-inner flex flex-col gap-2 relative">
                   <div className="flex justify-between items-center">
                     <span className="text-[7.5px] font-black uppercase text-neutral-500 tracking-wider">Revenue Spike Curve</span>
                     <span className={`text-[8px] font-extrabold px-2 py-0.5 rounded-full border ${
                       isBespoke 
-                        ? 'text-[#166534] bg-[#166534]/10 border-[#166534]/20' 
-                        : 'text-[#B91C1C] bg-[#B91C1C]/10 border-[#B91C1C]/20'
+                        ? 'text-[#B64D28] bg-[#FFB347]/16 border-[#FF8A4C]/25' 
+                        : 'text-[#6F6760] bg-[#D8D3CD]/30 border-[#D8D3CD]/50'
                     }`}>
                       {isBespoke ? "+148% conversion" : "Low retention"}
                     </span>
@@ -307,20 +344,9 @@ export default function Hero({ onNavigate }: HeroProps) {
                   
                   {/* SVG Graph with Path Morphing */}
                   <svg className="w-full h-16 overflow-visible" viewBox="0 0 100 30">
-                    <defs>
-                      <linearGradient id="chartGradAura" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#166534" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#166534" stopOpacity="0" />
-                      </linearGradient>
-                      <linearGradient id="chartGradTemplate" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#B91C1C" stopOpacity="0.2" />
-                        <stop offset="100%" stopColor="#B91C1C" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    
                     <motion.path 
                       d={isBespoke ? auraPath : templatePath}
-                      fill={isBespoke ? "url(#chartGradAura)" : "url(#chartGradTemplate)"} 
+                      fill="none" 
                       className="transition-all duration-300"
                     />
 
@@ -328,7 +354,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                       d={isBespoke ? auraPath : templatePath}
                       fill="none"
                       animate={{ 
-                        stroke: isBespoke ? "#166534" : "#B91C1C" 
+                        stroke: isBespoke ? "#FF6B3D" : "#D8D3CD" 
                       }}
                       strokeWidth="1.75"
                       strokeLinecap="round"
@@ -340,7 +366,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                       animate={{ 
                         cx: isBespoke ? 100 : 100, 
                         cy: isBespoke ? 7 : 29, 
-                        fill: isBespoke ? "#166534" : "#B91C1C" 
+                        fill: isBespoke ? "#FF6B3D" : "#D8D3CD" 
                       }}
                       r="2.5" 
                       className="stroke-white" 
@@ -354,22 +380,22 @@ export default function Hero({ onNavigate }: HeroProps) {
               <motion.div
                 className={`absolute -top-5 -left-6 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] rounded-2xl px-4 py-2.5 flex items-center gap-2 border z-20 pointer-events-auto transition-all duration-300 ${
                   isBespoke 
-                    ? 'bg-[#1D1D1F] text-white border-neutral-800' 
-                    : 'bg-[#18181B] text-neutral-400 border-neutral-800'
+                    ? 'bg-white text-[#2F2A27] border-[#FF8A4C]/30' 
+                    : 'bg-white text-[#6F6760] border-[#D8D3CD]/60'
                 }`}
                 whileHover={{ y: -4, scale: 1.05 }}
               >
                 <span className="relative flex h-2 w-2">
                   <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                    isBespoke ? 'bg-[#22C55E]' : 'bg-red-400'
+                    isBespoke ? 'bg-[#FFB347]' : 'bg-[#D8D3CD]'
                   }`} />
                   <span className={`relative inline-flex rounded-full h-2 w-2 ${
-                    isBespoke ? 'bg-[#22C55E]' : 'bg-red-500'
+                    isBespoke ? 'bg-[#FF6B3D]' : 'bg-[#D8D3CD]'
                   }`} />
                 </span>
                 <div className="text-left font-sans">
                   <p className="text-[6.5px] font-black uppercase tracking-widest leading-none opacity-80">ACTIVE USER TRAFFIC</p>
-                  <p className="text-[11px] font-black tracking-tight mt-0.5 leading-none text-white">
+                  <p className="text-[11px] font-black tracking-tight mt-0.5 leading-none text-[#2F2A27]">
                     {isBespoke ? "4,821 / live" : "14 / active"}
                   </p>
                 </div>
@@ -381,7 +407,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 whileHover={{ y: -6, scale: 1.04 }}
               >
                 <div className="flex items-center gap-1.5 mb-2.5">
-                  <Flame className={`w-3.5 h-3.5 ${isBespoke ? 'text-[#166534] animate-bounce' : 'text-neutral-450'}`} />
+                  <Flame className={`w-3.5 h-3.5 ${isBespoke ? 'text-[#FF6B3D] animate-bounce' : 'text-[#A69B91]'}`} />
                   <span className="text-[7.5px] font-black uppercase tracking-wider text-neutral-500">Site Audit Check</span>
                 </div>
                 
@@ -389,12 +415,12 @@ export default function Hero({ onNavigate }: HeroProps) {
                   <div className="flex items-center gap-1.5">
                     {isBespoke ? (
                       <>
-                        <CheckCircle2 className="w-3 h-3 text-[#166534]" />
+                        <CheckCircle2 className="w-3 h-3 text-[#FF6B3D]" />
                         <span className="text-[8px] font-extrabold text-neutral-700">99+ Google Lighthouse</span>
                       </>
                     ) : (
                       <>
-                        <AlertTriangle className="w-3 h-3 text-[#B91C1C]" />
+                        <AlertTriangle className="w-3 h-3 text-[#A69B91]" />
                         <span className="text-[8px] font-extrabold text-neutral-500">Laggy Theme Scripts</span>
                       </>
                     )}
@@ -402,12 +428,12 @@ export default function Hero({ onNavigate }: HeroProps) {
                   <div className="flex items-center gap-1.5">
                     {isBespoke ? (
                       <>
-                        <CheckCircle2 className="w-3 h-3 text-[#166534]" />
+                        <CheckCircle2 className="w-3 h-3 text-[#FF6B3D]" />
                         <span className="text-[8px] font-extrabold text-neutral-700">Conversion Focused UI</span>
                       </>
                     ) : (
                       <>
-                        <ShieldAlert className="w-3 h-3 text-[#B91C1C]" />
+                        <ShieldAlert className="w-3 h-3 text-[#A69B91]" />
                         <span className="text-[8px] font-extrabold text-neutral-500">Generic Template Look</span>
                       </>
                     )}
@@ -416,8 +442,8 @@ export default function Hero({ onNavigate }: HeroProps) {
 
                 <div className={`mt-3 py-1 text-center rounded-lg text-[6.5px] font-black uppercase tracking-widest border transition-colors ${
                   isBespoke 
-                    ? 'bg-neutral-50 border-neutral-200/50 text-[#166534]' 
-                    : 'bg-red-50 border-red-200/30 text-[#B91C1C]'
+                    ? 'bg-[#FFB347]/14 border-[#FF8A4C]/25 text-[#B64D28]' 
+                    : 'bg-[#D8D3CD]/30 border-[#D8D3CD]/50 text-[#6F6760]'
                 }`}>
                   {isBespoke ? "Engine Optimized" : "High Risk Audit"}
                 </div>
@@ -427,8 +453,8 @@ export default function Hero({ onNavigate }: HeroProps) {
               <motion.div
                 className={`absolute -bottom-5 -right-4 shadow-[0_15px_30px_-5px_rgba(0,0,0,0.1)] rounded-2xl px-4 py-3 flex items-center gap-2 border z-20 pointer-events-auto transition-all duration-300 ${
                   isBespoke 
-                    ? 'bg-gradient-to-br from-[#166534] to-[#14532D] text-white border-[#166534]/20 shadow-[0_15px_30px_-5px_rgba(22,101,52,0.2)]' 
-                    : 'bg-gradient-to-br from-[#B91C1C] to-[#7F1D1D] text-white border-red-400/20 shadow-[0_15px_30px_-5px_rgba(185,28,28,0.25)]'
+                    ? 'bg-[#FF6B3D] text-white border-[#FFB347]/30 shadow-[0_15px_30px_-5px_rgba(255,107,61,0.25)]' 
+                    : 'bg-[#D8D3CD] text-[#2F2A27] border-[#D8D3CD]/70 shadow-[0_15px_30px_-5px_rgba(47,42,39,0.12)]'
                 }`}
                 whileHover={{ y: -4, scale: 1.05 }}
               >

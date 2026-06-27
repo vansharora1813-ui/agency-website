@@ -136,7 +136,7 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <div className="bg-[#F0F4F8] min-h-screen pt-32 pb-24 text-left">
+    <div className="bg-transparent min-h-screen pt-32 pb-24 text-left">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Typographic Intro */}

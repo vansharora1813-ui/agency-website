@@ -32,7 +32,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-28 bg-[#F0F4F8] border-t border-[#ECECEC]">
+    <section className="py-28 bg-transparent border-t border-[#ECECEC]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}

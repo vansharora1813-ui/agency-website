@@ -25,14 +25,12 @@ export default function Process() {
   });
 
   return (
-    <section id="process" className="py-28 bg-[#F0F4F8] border-t border-[#ECECEC] relative overflow-hidden">
-      {/* Dynamic Background Mesh Effect */}
-      <div className="absolute right-0 top-0 w-96 h-96 bg-neutral-100/50 rounded-full blur-3xl -z-10" />
+    <section id="process" className="py-28 bg-transparent border-t border-[#ECECEC] relative overflow-hidden">
 
       <div className="max-w-5xl mx-auto px-6 sm:px-8">
         {/* Header */}
         <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <span className="text-[10px] font-black text-neutral-450 uppercase tracking-widest">TIMELINE</span>
+          <span className="font-mergola italic text-sm text-neutral-600 capitalize tracking-normal">our timeline</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-neutral-900 tracking-tight leading-tight">
             An Agile 5-Day Launch Path.
           </h2>
@@ -72,7 +70,7 @@ export default function Process() {
                 className="relative group"
               >
                 {/* Glowing Node on timeline line */}
-                <div className="absolute -left-[38px] md:-left-[62px] top-6 w-4 h-4 rounded-full bg-[#F0F4F8] border-2 border-neutral-300 group-hover:border-neutral-950 flex items-center justify-center transition-all duration-300 z-10 shadow-sm">
+                <div className="absolute -left-[38px] md:-left-[62px] top-6 w-4 h-4 rounded-full bg-[#F2F1EE] border-2 border-neutral-300 group-hover:border-neutral-950 flex items-center justify-center transition-all duration-300 z-10 shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 group-hover:bg-neutral-950 transition-all duration-300 group-hover:scale-125" />
                 </div>
 

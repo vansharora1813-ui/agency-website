@@ -59,7 +59,7 @@ export default function Services({ onNavigate }: ServicesProps) {
             
             {/* Minimalist interactive node diagram or preview thumbnail */}
             <div className="flex items-center gap-2 bg-neutral-50 border border-neutral-200/80 px-2.5 py-1 rounded-full text-[7px] font-semibold text-neutral-800 shadow-sm">
-              <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-1 h-1 rounded-full bg-[#FF6B3D] animate-pulse" />
               <span className="font-mono tracking-tight text-[6px]">142.4 FPS / LIGHTNING</span>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function Services({ onNavigate }: ServicesProps) {
         <div className="w-full max-w-[360px] rounded-xl border border-neutral-200 bg-white shadow-xl p-4 flex flex-col justify-between text-neutral-900 text-left h-44 overflow-hidden font-sans">
           <div className="flex justify-between items-center text-[7px] text-neutral-400">
             <span className="font-extrabold uppercase">CONVERSIONS</span>
-            <span className="text-emerald-500 bg-emerald-50 px-1.5 py-0.5 rounded font-bold uppercase text-[6px]">ACTIVE</span>
+            <span className="text-[#C2410C] bg-[#FFB347]/15 px-1.5 py-0.5 rounded font-bold uppercase text-[6px]">ACTIVE</span>
           </div>
           <div className="space-y-2 mt-2">
             <div className="w-10 h-1.5 rounded bg-neutral-200" />
@@ -105,7 +105,7 @@ export default function Services({ onNavigate }: ServicesProps) {
           </div>
           <div className="p-2.5 bg-neutral-50 rounded-lg border border-neutral-150 flex items-center justify-between text-[8px] font-bold">
             <div className="flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B3D] animate-pulse" />
               <span>Table Booking Success</span>
             </div>
             <span className="text-neutral-500"> Dwarka </span>
@@ -143,8 +143,8 @@ export default function Services({ onNavigate }: ServicesProps) {
           </div>
           <div className="flex justify-between items-center pt-2.5 border-t border-neutral-100 mt-2 text-[7px] font-bold text-neutral-500">
             <span>Uptime Monitoring</span>
-            <span className="text-emerald-600 font-extrabold flex items-center gap-1">
-              <span className="w-1 h-1 rounded-full bg-emerald-500" /> 100% Active
+            <span className="text-[#C2410C] font-extrabold flex items-center gap-1">
+              <span className="w-1 h-1 rounded-full bg-[#FF6B3D]" /> 100% Active
             </span>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function Services({ onNavigate }: ServicesProps) {
   ];
 
   return (
-    <section id="services" className="py-28 bg-[#F0F4F8] border-t border-[#ECECEC] relative overflow-hidden">
+    <section id="services" className="py-28 bg-transparent border-t border-[#ECECEC] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           variants={containerVariants}

@@ -45,7 +45,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-28 bg-[#F0F4F8] border-t border-[#ECECEC]">
+    <section id="testimonials" className="py-28 bg-transparent border-t border-[#ECECEC]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
         <div className="space-y-16 text-center">
           {/* Header */}
