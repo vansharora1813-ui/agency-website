@@ -108,7 +108,7 @@ function AppContent() {
   };
 
   return (
-    <div className="bg-[#F0F4F8] text-[#111111] min-h-screen relative flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
+    <div className="bg-bg-light text-[#111111] min-h-screen relative flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
       {/* Floating Scroll Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-[2.5px] bg-neutral-100 z-50">
         <div

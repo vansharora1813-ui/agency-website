@@ -33,18 +33,17 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
   };
 
   return (
-    <div className="fixed top-6 left-0 right-0 z-50 px-6 sm:px-8 flex justify-center pointer-events-none">
+    <div className="fixed top-5 left-0 right-0 z-50 px-3 sm:px-5 flex justify-center pointer-events-none">
       <div className="w-full max-w-7xl flex items-center justify-center relative">
         
         {/* Logo (Top Left) */}
-        <div className="absolute left-0 pointer-events-auto">
+        <div className="absolute left-0 top-0 pointer-events-auto">
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, 'home')}
-            className="flex items-center gap-1.5 font-display text-sm font-extrabold tracking-tight text-neutral-900 select-none bg-white/80 backdrop-blur-md border border-neutral-200/40 px-4 py-2.5 rounded-full shadow-sm hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+            className="font-display text-[1.25rem] sm:text-[1.55rem] md:text-[1.85rem] font-black leading-none tracking-tight text-neutral-950 select-none transition-opacity duration-200 hover:opacity-70 cursor-pointer"
           >
-            <span>AURA</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#166534]" />
+            AURA STUDIO
           </a>
         </div>
 
@@ -58,7 +57,7 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
           }`}
         >
           {/* Center Links */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6">
             {menuItems.map((item) => (
               <a
                 key={item.id}
@@ -81,7 +80,7 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
           </nav>
 
           {/* Mobile Hamburger Toggle */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-1.5 rounded-full hover:bg-neutral-100 text-neutral-600 transition-colors"
@@ -93,11 +92,11 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
         </motion.header>
 
         {/* Consultation Button (Top Right) - Premium Button Style */}
-        <div className="absolute right-0 pointer-events-auto hidden md:flex items-center">
+        <div className="absolute right-0 pointer-events-auto hidden lg:flex items-center">
           <a
             href="#contact"
             onClick={(e) => handleLinkClick(e, 'contact')}
-            className="group relative inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#111111] hover:bg-neutral-900 text-[#F0F4F8] hover:text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_25px_rgba(22,101,52,0.25)] hover:scale-[1.02] border border-neutral-850 cursor-pointer overflow-hidden"
+            className="group relative inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#111111] hover:bg-neutral-900 text-bg-light hover:text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_25px_rgba(22,101,52,0.25)] hover:scale-[1.02] border border-neutral-850 cursor-pointer overflow-hidden"
           >
             <span className="tracking-widest">Consultation</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" />

@@ -7,7 +7,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const words = ['Customers', 'Brand Leaders', 'Active Leads', 'Success Stories'];
+  const words = ['Growth', 'Leads', 'Sales', 'Trust'];
   const [index, setIndex] = useState(0);
   const [isBespoke, setIsBespoke] = useState(true);
 
@@ -49,10 +49,10 @@ export default function Hero({ onNavigate }: HeroProps) {
 
   // Premium Solid Colors for Rotating Keywords (Red/Green Shades)
   const keywordColors = [
-    'text-[#1E3F20]', // Customers (Forest Green)
-    'text-[#991B1B]', // Brand Leaders (Crimson Red)
-    'text-[#166534]', // Active Leads (Emerald Green)
-    'text-[#881337]'  // Success Stories (Burgundy Red)
+    'text-[#1E3F20]', // Growth (Forest Green)
+    'text-[#991B1B]', // Leads (Crimson Red)
+    'text-[#166534]', // Sales (Emerald Green)
+    'text-[#881337]'  // Trust (Burgundy Red)
   ];
 
   const borderColors = [
@@ -74,60 +74,55 @@ export default function Hero({ onNavigate }: HeroProps) {
   const templatePath = "M0 25 C15 28, 25 24, 40 28 C55 26, 65 29, 80 28 C90 28, 95 29, 100 29";
 
   return (
-    <section id="home" className="relative min-h-screen bg-[#F0F4F8] flex items-center justify-center pt-28 pb-16 overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-[#F0F4F8] flex items-center justify-center pt-32 sm:pt-36 lg:pt-28 pb-16 overflow-hidden">
       {/* Editorial Background Grid Lines (Subtle) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[size:6rem_6rem] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 xl:gap-12 items-center">
           
           {/* Column 1: Editorial Heading & Copy (Left Side - Expanded to lg:col-span-8 for spaciousness) */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-8 space-y-6 text-left"
+            className="lg:col-span-8 xl:col-span-8 text-left"
           >
             {/* Minimal label */}
             <motion.div 
               variants={fadeUpVariants} 
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E4E4E7]/50 border border-neutral-300/30 text-[9px] font-black uppercase tracking-wider text-neutral-600 shadow-sm"
+              className="group mb-1.5 sm:mb-2 inline-flex items-center gap-2 rounded-full border border-neutral-300/60 bg-white/55 px-3.5 py-1.5 text-[8.5px] sm:text-[9.5px] font-black uppercase tracking-[0.28em] text-neutral-600 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-neutral-950/25 hover:bg-white hover:text-neutral-950 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-neutral-600 animate-pulse" />
-              <span>AURA STUDIO / Next-Gen Engineering</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#166534] transition-transform duration-300 group-hover:scale-[1.7]" />
+              Custom Web Systems
             </motion.div>
 
             {/* Huge bold headline (Masked text reveal) */}
-            <div className="overflow-hidden">
+            <div className="mt-3 sm:mt-4 overflow-hidden">
               <motion.h1 
                 variants={textMaskVariants}
-                className="text-3xl sm:text-5xl lg:text-6xl font-black font-display text-neutral-900 tracking-tight leading-[1.08] text-left"
+                className="text-[2.55rem] min-[390px]:text-[2.9rem] sm:text-[3.8rem] lg:text-[4.25rem] xl:text-[5rem] 2xl:text-[5.55rem] font-black font-display text-neutral-950 tracking-tight leading-[0.94] text-left"
               >
-                Websites Engineered for{' '}
+                <span className="block leading-[0.94]">Websites</span>
+                <span className="block leading-[0.94]">Built for</span>
                 <motion.span
-                  layout
                   transition={{ type: 'spring', stiffness: 180, damping: 24 }}
-                  className="inline-flex items-baseline relative select-none text-left"
+                  className="block relative select-none text-left pt-1 sm:pt-1.5 leading-[0.94]"
                 >
-                  {/* Underlined static container - underline transitions colors dynamically */}
-                  <span className={`inline-block relative border-b-[3.5px] pb-0.5 transition-colors duration-300 ${borderColors[index]}`}>
-                    <span className="inline-block relative overflow-hidden h-[1.1em] align-bottom">
-                      <AnimatePresence mode="popLayout">
+                  <span className="inline-block w-[6.1ch] max-w-full relative overflow-hidden h-[1.02em] align-bottom">
+                      <AnimatePresence mode="wait">
                         <motion.span
                           key={words[index]}
                           initial={{ y: '100%', opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ y: '-100%', opacity: 0 }}
                           transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-                          className={`inline-block font-display leading-none whitespace-nowrap transition-colors duration-300 ${keywordColors[index]}`}
+                          className={`absolute left-0 top-0 inline-block border-b-[2.5px] sm:border-b-[3.5px] lg:border-b-[4px] pb-1 font-display leading-[0.9] whitespace-nowrap transition-colors duration-300 ${keywordColors[index]} ${borderColors[index]}`}
                         >
-                          {words[index]}
+                          {words[index]}<span className={dotColors[index]}>.</span>
                         </motion.span>
                       </AnimatePresence>
-                    </span>
                   </span>
-                  {/* Static dot */}
-                  <span className={`align-bottom ml-1 font-display transition-colors duration-300 ${dotColors[index]}`}>.</span>
                 </motion.span>
               </motion.h1>
             </div>
@@ -135,19 +130,20 @@ export default function Hero({ onNavigate }: HeroProps) {
             {/* Supporting text - Increased font size and contrast for premium readability */}
             <motion.p 
               variants={fadeUpVariants}
-              className="text-sm sm:text-base text-neutral-600 font-medium max-w-xl leading-relaxed text-left"
+              className="mt-6 sm:mt-7 text-[13px] sm:text-[14px] lg:text-[15px] text-neutral-600 font-medium max-w-xl leading-[1.65] text-left"
             >
-              We craft high-performance, custom-coded web properties for startups, brands, and modern businesses. Tailored layouts, zero-bloat code, and exceptional engineering.
+              We craft high-performance, custom-coded websites for startups, brands,<br className="hidden sm:block" />
+              and modern businesses.
             </motion.p>
 
             {/* CTA Actions */}
             <motion.div 
               variants={fadeUpVariants} 
-              className="flex flex-wrap items-center gap-4 pt-1"
+              className="flex flex-wrap items-center gap-4 pt-6 sm:pt-7"
             >
               <button
                 onClick={() => onNavigate('contact')}
-                className="group relative inline-flex items-center justify-center gap-1.5 px-6 py-3 rounded-full bg-neutral-950 hover:bg-neutral-900 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_25px_rgba(156,140,125,0.25)] hover:scale-[1.01] cursor-pointer"
+                className="group relative inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-900 text-white font-bold text-[11px] uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_4px_25px_rgba(156,140,125,0.25)] hover:scale-[1.01] cursor-pointer"
               >
                 <span>Book a Free Call</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -155,7 +151,7 @@ export default function Hero({ onNavigate }: HeroProps) {
               
               <button
                 onClick={() => onNavigate('portfolio')}
-                className="group inline-flex items-center gap-1 py-3 px-4 text-neutral-600 hover:text-neutral-950 font-bold text-xs uppercase tracking-wider transition-colors duration-250 cursor-pointer"
+                className="group inline-flex items-center gap-1 py-2.5 px-3 text-neutral-600 hover:text-neutral-950 font-bold text-[11px] uppercase tracking-wider transition-colors duration-250 cursor-pointer"
               >
                 <span>View Our Work</span>
                 <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -168,7 +164,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 w-full flex justify-center relative z-10 pt-8 lg:pt-0"
+            className="lg:col-span-4 xl:col-span-4 w-full flex justify-center lg:justify-end relative z-10 pt-8 lg:pt-10 xl:pt-14"
           >
             {/* Ambient Glowing Background Lights */}
             <div className="absolute -top-10 -right-10 w-64 h-64 bg-neutral-400/5 rounded-full blur-3xl pointer-events-none animate-pulse" />
